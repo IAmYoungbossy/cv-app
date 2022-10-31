@@ -1,0 +1,16 @@
+.form-top-btn {
+  margin: 10px;
+  text-align: center;
+}
+
+.form-top-btn > * {
+  margin: 5px;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: bolder;
+  background-color: #007480;
+  box-shadow: 0px 1.5px 2px 1px #002131;
+}
