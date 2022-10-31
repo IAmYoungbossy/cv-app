@@ -1,12 +1,15 @@
-import Footer from '../Footer/Footer';
-import './App.css';
+import { Component } from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <Footer />
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Footer />
+      </div>
+    );
+  }
 }
-
-export default App;
