@@ -1,0 +1,50 @@
+form > fieldset {
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: min(600px, 75vw);
+}
+
+fieldset > div,
+.input-wrapper > div {
+  display: flex;
+  width: inherit;
+  margin-top: 5px;
+  flex-direction: column;
+}
+
+.input-wrapper > div {
+  width: 50%;
+}
+
+.input-wrapper {
+  flex-direction: row;
+  gap: 5px;
+}
+
+fieldset > div > input, textarea {
+  width: 100%;
+  resize: none;
+}
+
+input {
+  padding: 5px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #007480;
+}
+
+::-webkit-file-upload-button {
+  height: 30px;
+  padding: 5px;
+  border: none;
+  color: white;
+  padding-bottom: 7.5px;
+  background-color: #333333;
+}
+
+input[type="file"] {
+  padding: 0;
+}
