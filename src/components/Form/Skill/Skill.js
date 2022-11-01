@@ -5,7 +5,7 @@ class SkillList extends Component {
     return (
       <li>
         <div className="skill-wrapper">
-          <label htmlFor="skill">Skill {this.props.index+1}:</label>
+          <label htmlFor="skill">Skill {this.props.index + 1}:</label>
           <div className="list-wrapper">
             <input
               type="text"
@@ -95,6 +95,12 @@ export default class Skill extends Component {
     });
   };
 
+  addSkillCategory = () => {
+    this.setState({
+      skillCategory: [...this.state.skillCategory, []],
+    });
+  };
+
   removeSkillCategory = (index) => {
     const skillCategoryCopy = [...this.state.skillCategory];
     skillCategoryCopy.splice(index, 1);
@@ -103,13 +109,11 @@ export default class Skill extends Component {
     });
   };
 
-  addSkillCategory = () => {
-    this.setState({
-      skillCategory: [...this.state.skillCategory, []],
-    });
-  };
-
   render() {
+    const expandBtn = () => {
+      if (this.state.skillCategory.length === 0) return "Expand Field";
+      return "Add Category";
+    };
     return (
       <fieldset>
         <legend>SKILLS</legend>
@@ -128,7 +132,7 @@ export default class Skill extends Component {
           className="category-btn"
           onClick={this.addSkillCategory}
         >
-          Add Category
+          {expandBtn()}
         </button>
       </fieldset>
     );
