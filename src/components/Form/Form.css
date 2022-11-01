@@ -24,7 +24,22 @@ fieldset > div,
   gap: 5px;
 }
 
-fieldset > div > input, textarea {
+.skill-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  padding-left: 10px;
+  list-style-type: disclosure-closed;
+}
+
+fieldset > div > input,
+textarea {
   width: 100%;
   resize: none;
 }

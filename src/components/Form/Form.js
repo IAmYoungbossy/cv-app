@@ -3,6 +3,7 @@ import PersonalInfo from "./PersonalInfo/PersonalInfo";
 import "./Form.css";
 import Experience from "./Experience/Experience";
 import Education from "./Education/Education";
+import Skill from "./Skill/Skill";
 
 export default class Form extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Form extends Component {
         <PersonalInfo />
         <Experience />
         <Education />
+        <Skill />
       </form>
     );
   }
