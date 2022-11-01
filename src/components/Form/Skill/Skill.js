@@ -25,30 +25,10 @@ class SkillList extends Component {
   }
 }
 
-export default class Skill extends Component {
-  state = {
-    skillList: [],
-  };
-
-  setSkillList = () => {
-    this.setState({
-      skillList: [...this.state.skillList, "List"],
-    });
-  };
-
-  removeSkillList = (index) => {
-    const skillListCopy = [...this.state.skillList];
-    skillListCopy.splice(index, 1);
-    this.setState({
-      skillList: skillListCopy,
-    });
-  };
-
+class SkillCategory extends Component {
   render() {
     return (
-      <fieldset>
-        <legend>SKILLS</legend>
-
+      <>
         <div>
           <label htmlFor="skill_category">Category:</label>
           <input
@@ -60,11 +40,11 @@ export default class Skill extends Component {
 
         <div>
           <ul>
-            {this.state.skillList.map((list, index) => (
+            {this.props.skillList.map((list, index) => (
               <SkillList
                 key={index}
                 index={index}
-                removeList={() => this.removeSkillList()}
+                removeList={() => this.props.removeList(index)}
               />
             ))}
           </ul>
@@ -73,12 +53,73 @@ export default class Skill extends Component {
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              this.setSkillList();
+              this.props.addSkillList();
             }}
           >
             Add List
           </button>
         </div>
+      </>
+    );
+  }
+}
+
+export default class Skill extends Component {
+  state = {
+    skillCategory: [],
+  };
+
+  addSkillList = (indexCat) => {
+    const skillList = [...this.state.skillCategory];
+    skillList[indexCat].push("List");
+    this.setState({
+      skillCategory: skillList,
+    });
+  };
+
+  removeSkillList = (indexCat, indexLi) => {
+    const skillList = [...this.state.skillCategory];
+    skillList[indexCat].splice(indexLi, 1);
+    this.setState({
+      skillList: skillList,
+    });
+  };
+
+  removeSkillCategory = (index) => {
+    const skillCategoryCopy = [...this.state.skillList];
+    skillCategoryCopy.splice(index, 1);
+    this.setState({
+      skillCategory: skillCategoryCopy,
+    });
+  };
+
+  addSkillCategory = () => {
+    this.setState({
+      skillCategory: [...this.state.skillCategory, []],
+    });
+  };
+
+  render() {
+    return (
+      <fieldset>
+        <legend>SKILLS</legend>
+        {this.state.skillCategory.map((list, index) => (
+          <SkillCategory
+            key={index}
+            index={index}
+            addSkillList={() => this.addSkillList(index)}
+            skillList={this.state.skillCategory[index]}
+            removeCategory={() => this.removeSkillCategory()}
+            removeList={(indexLi) => this.removeSkillList(index, indexLi)}
+          />
+        ))}
+        <button
+          type="button"
+          className="category-btn"
+          onClick={this.addSkillCategory}
+        >
+          Add Category
+        </button>
       </fieldset>
     );
   }

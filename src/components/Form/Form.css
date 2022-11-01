@@ -58,7 +58,8 @@ li {
   background-color: #333333;
 }
 
-.add-list-btn {
+.add-list-btn,
+.category-btn {
   padding: 8px;
   border: none;
   color: white;
@@ -66,6 +67,10 @@ li {
   width: fit-content;
   border-radius: 3px;
   background-color: #333333;
+}
+
+.category-btn {
+  width: inherit;
 }
 
 li::marker {
