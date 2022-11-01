@@ -16,7 +16,8 @@ export default class Form extends Component {
         <PersonalInfo />
         <Experience />
         <Education />
-        <Skill />
+        <Skill onClick={this.getSkillList} >
+        </Skill>
       </form>
     );
   }
