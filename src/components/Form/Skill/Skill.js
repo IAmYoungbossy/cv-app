@@ -5,7 +5,7 @@ class SkillList extends Component {
     return (
       <li>
         <div className="skill-wrapper">
-          <label htmlFor="skill">Skill</label>
+          <label htmlFor="skill">Skill {this.props.index+1}:</label>
           <div className="list-wrapper">
             <input
               type="text"
@@ -30,12 +30,22 @@ class SkillCategory extends Component {
     return (
       <>
         <div>
-          <label htmlFor="skill_category">Category:</label>
-          <input
-            type="text"
-            id="skill_category"
-            name="skill_category"
-          />
+          <label htmlFor="skill_category">
+            Category {this.props.index + 1}:
+          </label>
+          <div className="category_wrapper">
+            <input
+              type="text"
+              id="skill_category"
+              name="skill_category"
+            />
+            <button
+              type="button"
+              onClick={this.props.removeCategory}
+            >
+              Remove
+            </button>
+          </div>
         </div>
 
         <div>
@@ -86,7 +96,7 @@ export default class Skill extends Component {
   };
 
   removeSkillCategory = (index) => {
-    const skillCategoryCopy = [...this.state.skillList];
+    const skillCategoryCopy = [...this.state.skillCategory];
     skillCategoryCopy.splice(index, 1);
     this.setState({
       skillCategory: skillCategoryCopy,

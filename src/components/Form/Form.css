@@ -35,20 +35,23 @@ ul {
 }
 
 li {
-  padding: 5px;
+  padding: 5px 39px;
   padding-left: 10px;
   list-style-type: disclosure-closed;
 }
 
-.list-wrapper {
+.list-wrapper,
+.category_wrapper {
   display: flex;
 }
 
-.list-wrapper > input {
+.list-wrapper > input,
+.category_wrapper > input {
   flex: 1;
 }
 
-.list-wrapper > button {
+.list-wrapper > button,
+.category_wrapper > button {
   width: 35px;
   border: none;
   font-size: 1.2rem;
@@ -56,6 +59,12 @@ li {
   border-radius: 3px;
   color: rgb(255, 206, 206);
   background-color: #333333;
+}
+
+.category_wrapper > button {
+  padding: 0 10px;
+  font-size: 0.9rem;
+  width: fit-content;
 }
 
 .add-list-btn,
