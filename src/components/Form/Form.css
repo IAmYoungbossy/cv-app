@@ -16,11 +16,12 @@ fieldset > div,
 }
 
 .input-wrapper > div {
-  width: 50%;
+  width: 100%;
 }
 
 .input-wrapper {
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 5px;
 }
 
@@ -36,6 +37,10 @@ ul {
 li {
   padding-left: 10px;
   list-style-type: disclosure-closed;
+}
+
+li::marker {
+  color: #007480;
 }
 
 fieldset > div > input,
