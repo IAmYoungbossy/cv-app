@@ -1,6 +1,10 @@
 .App {
-  height: 100vh;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   background-color: #f0eef1;
+}
+
+main {
+  margin-top: 70px;
 }

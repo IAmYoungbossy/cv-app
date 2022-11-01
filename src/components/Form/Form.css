@@ -2,6 +2,7 @@ form > fieldset {
   margin: auto;
   padding: 20px;
   display: flex;
+  margin-bottom: 20px;
   flex-direction: column;
   width: min(600px, 75vw);
 }
@@ -26,6 +27,17 @@ fieldset > div,
 fieldset > div > input, textarea {
   width: 100%;
   resize: none;
+}
+
+fieldset {
+  background-color: #c3bcbc2b;
+}
+
+legend {
+  color: #d7fff9;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: #333333;
 }
 
 input {

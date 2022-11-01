@@ -4,9 +4,12 @@ h1 {
 }
 
 header {
+  z-index: 1;
   color: #eee;
   padding: 10px;
+  position: fixed;
   text-align: center;
   background-color: #333333;
+  width: -webkit-fill-available;
   border-bottom: 5px solid #007480;
 }
