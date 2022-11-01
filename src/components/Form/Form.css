@@ -40,6 +40,31 @@ li {
   list-style-type: disclosure-closed;
 }
 
+.education-btn {
+  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.add-education,
+.remove-education {
+  padding: 8px;
+  border: none;
+  color: white;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  background-color: #333333;
+}
+
+hr {
+  padding: 1px;
+  border: 1px solid;
+  margin-left: 80px;
+  margin-bottom: 2px;
+  margin-right: 80px;
+}
+
 .list-wrapper,
 .category_wrapper {
   display: flex;

@@ -1,11 +1,9 @@
 import { Component } from "react";
 
-export default class Education extends Component {
+class EducationField extends Component {
   render() {
     return (
-      <fieldset>
-        <legend>EDUCATION</legend>
-
+      <>
         <div className="input-wrapper">
           <div>
             <label htmlFor="university">University Name:</label>
@@ -61,6 +59,76 @@ export default class Education extends Component {
             name="course"
           />
         </div>
+
+        <div className="education-btn">
+          <button
+            type="button"
+            className="add-education"
+            onClick={() => this.props.addEducation()}
+          >
+            Add Field
+          </button>
+          <button
+            type="button"
+            className="remove-education"
+            onClick={() => this.props.removeEducation()}
+          >
+            Remove Field
+          </button>
+        </div>
+      </>
+    );
+  }
+}
+
+export default class Education extends Component {
+  state = {
+    education: [],
+  };
+
+  addEducation = () => {
+    this.setState({
+      education: [...this.state.education, []],
+    });
+  };
+
+  removeEducation = (index) => {
+    const educationCopy = [...this.state.education];
+    educationCopy.splice(index, 1);
+    this.setState({
+      education: educationCopy,
+    });
+  };
+
+  render() {
+    const expandBtn = () => {
+      if (this.state.education.length === 0) return "Expand Field";
+      return "Add Category";
+    };
+    const emptyArray = this.state.education.length === 0;
+    return (
+      <fieldset>
+        <legend>EDUCATION</legend>
+        {this.state.education.map((list, index) => (
+          <>
+            <EducationField
+              key={index+5}
+              index={index}
+              addEducation={() => this.addEducation()}
+              removeEducation={() => this.removeEducation(index)}
+            />
+            <br key={index+1}/> <hr key={index+2}/>
+          </>
+        ))}
+        {emptyArray && (
+          <button
+            type="button"
+            className="category-btn"
+            onClick={this.addEducation}
+          >
+            {expandBtn()}
+          </button>
+        )}
       </fieldset>
     );
   }
