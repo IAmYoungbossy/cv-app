@@ -1,4 +1,5 @@
 import { Component } from "react";
+import uniqid from "uniqid";
 
 class SkillList extends Component {
   render() {
@@ -52,7 +53,7 @@ class SkillCategory extends Component {
           <ul>
             {this.props.skillList.map((list, index) => (
               <SkillList
-                key={index}
+                key={this.props.key}
                 index={index}
                 removeList={() => this.props.removeList(index)}
               />
@@ -77,6 +78,7 @@ class SkillCategory extends Component {
 export default class Skill extends Component {
   state = {
     skillCategory: [],
+    id: uniqid,
   };
 
   addSkillList = (indexCat) => {
@@ -119,7 +121,7 @@ export default class Skill extends Component {
         <legend>SKILLS</legend>
         {this.state.skillCategory.map((list, index) => (
           <SkillCategory
-            key={index}
+            key={this.state.id()}
             index={index}
             addSkillList={() => this.addSkillList(index)}
             skillList={this.state.skillCategory[index]}

@@ -1,9 +1,13 @@
 import { Component } from "react";
+import uniqid from "uniqid";
 
 class ExperienceField extends Component {
   render() {
     return (
       <>
+        <p>
+          <span>{this.props.index + 1}</span>
+        </p>
         <div className="input-wrapper">
           <div>
             <label htmlFor="position">Position:</label>
@@ -22,7 +26,6 @@ class ExperienceField extends Component {
             />
           </div>
         </div>
-
         <div>
           <label htmlFor="city">City:</label>
           <input
@@ -31,7 +34,6 @@ class ExperienceField extends Component {
             name="city"
           />
         </div>
-
         <div className="input-wrapper">
           <div>
             <label htmlFor="from">From:</label>
@@ -50,7 +52,6 @@ class ExperienceField extends Component {
             />
           </div>
         </div>
-
         <div className="education-btn">
           <button
             type="button"
@@ -67,6 +68,7 @@ class ExperienceField extends Component {
             Remove Field
           </button>
         </div>
+        <br /> <hr />
       </>
     );
   }
@@ -75,11 +77,12 @@ class ExperienceField extends Component {
 export default class Experience extends Component {
   state = {
     experience: [],
+    id: uniqid,
   };
 
   addExperience = () => {
     this.setState({
-      experience: [...this.state.experience, []],
+      experience: [...this.state.experience, [this.state.id()]],
     });
   };
 
@@ -101,15 +104,12 @@ export default class Experience extends Component {
       <fieldset>
         <legend>EXPERIENCE</legend>
         {this.state.experience.map((list, index) => (
-          <>
-            <ExperienceField
-              key={index + 6}
-              index={index}
-              addExperience={() => this.addExperience()}
-              removeExperience={() => this.removeExperience(index)}
-            />
-            <br key={index + 4} /> <hr key={index + 7} />
-          </>
+          <ExperienceField
+            key={this.state.experience[index][0]}
+            index={index}
+            addExperience={() => this.addExperience()}
+            removeExperience={() => this.removeExperience(index)}
+          />
         ))}
         {emptyArray && (
           <button

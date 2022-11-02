@@ -22,7 +22,6 @@ class PersonalInfoField extends Component {
             />
           </div>
         </div>
-
         <div>
           <label htmlFor="job_title">Job Title:</label>
           <input
@@ -31,7 +30,6 @@ class PersonalInfoField extends Component {
             name="job_title"
           />
         </div>
-
         <div className="input-wrapper">
           <div>
             <label htmlFor="phone_number">Phone Number:</label>
@@ -50,7 +48,6 @@ class PersonalInfoField extends Component {
             />
           </div>
         </div>
-
         <div className="input-wrapper">
           <div>
             <label htmlFor="address">Address:</label>
@@ -70,7 +67,6 @@ class PersonalInfoField extends Component {
             />
           </div>
         </div>
-
         <div>
           <label htmlFor="desc">Description:</label>
           <textarea
@@ -80,7 +76,6 @@ class PersonalInfoField extends Component {
             cols="50"
           ></textarea>
         </div>
-
         <div className="personal-btn">
           <button
             type="button"
@@ -90,6 +85,7 @@ class PersonalInfoField extends Component {
             Collapse Field
           </button>
         </div>
+        <br /> <hr />
       </>
     );
   }
@@ -97,44 +93,32 @@ class PersonalInfoField extends Component {
 
 export default class PersonalInfo extends Component {
   state = {
-    personalInfo: [],
+    personalInfo: false,
   };
 
   addPersonalInfo = () => {
     this.setState({
-      personalInfo: [...this.state.personalInfo, []],
+      personalInfo: true,
     });
   };
 
-  removePersonalInfo = (index) => {
-    const personalInfoCopy = [...this.state.personalInfo];
-    personalInfoCopy.splice(index, 1);
+  removePersonalInfo = () => {
     this.setState({
-      personalInfo: personalInfoCopy,
+      personalInfo: false,
     });
   };
 
   render() {
     const expandBtn = () => {
-      if (this.state.personalInfo.length === 0) return "Expand Field";
+      if (!this.state.personalInfo) return "Expand Field";
       return "collapse Field";
     };
-    const emptyArray = this.state.personalInfo.length === 0;
+    const collapse = this.state.personalInfo === false;
+    const expand = this.state.personalInfo === true;
     return (
       <fieldset>
-        <legend>PERSONAL INFORMATION</legend>
-        {this.state.personalInfo.map((list, index) => (
-          <>
-            <PersonalInfoField
-              key={index + 18}
-              index={index}
-              addPersonalInfo={() => this.addPersonalInfo()}
-              removePersonalInfo={() => this.removePersonalInfo(index)}
-            />
-            <br key={index + 15} /> <hr key={index + 19} />
-          </>
-        ))}
-        {emptyArray && (
+        <legend>PERSONAL INFO</legend>
+        {collapse && (
           <button
             type="button"
             className="category-btn"
@@ -142,6 +126,12 @@ export default class PersonalInfo extends Component {
           >
             {expandBtn()}
           </button>
+        )}
+        {expand && (
+          <PersonalInfoField
+            addPersonalInfo={() => this.addPersonalInfo()}
+            removePersonalInfo={() => this.removePersonalInfo()}
+          />
         )}
       </fieldset>
     );

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import uniqid from "uniqid";
 
 class EducationField extends Component {
   render() {
@@ -84,6 +85,7 @@ class EducationField extends Component {
 export default class Education extends Component {
   state = {
     education: [],
+    id: uniqid,
   };
 
   addEducation = () => {
@@ -112,12 +114,12 @@ export default class Education extends Component {
         {this.state.education.map((list, index) => (
           <>
             <EducationField
-              key={index+5}
+              key={this.state.id()}
               index={index}
               addEducation={() => this.addEducation()}
               removeEducation={() => this.removeEducation(index)}
             />
-            <br key={index+1}/> <hr key={index+2}/>
+            <br key={this.state.id()} /> <hr key={this.state.id()} />
           </>
         ))}
         {emptyArray && (
