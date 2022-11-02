@@ -1,21 +1,23 @@
-form > fieldset {
+form>fieldset {
   margin: auto;
   padding: 20px;
   display: flex;
   margin-bottom: 20px;
   flex-direction: column;
   width: min(600px, 75vw);
+  border: 1px solid #00000069;
+  box-shadow: 0px 2px 4px 0px #000000a3;
 }
 
-fieldset > div,
-.input-wrapper > div {
+fieldset>div,
+.input-wrapper>div {
   display: flex;
   width: inherit;
   margin-top: 5px;
   flex-direction: column;
 }
 
-.input-wrapper > div {
+.input-wrapper>div {
   width: 100%;
 }
 
@@ -46,6 +48,10 @@ li {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.personal-btn {
+  display: flex;
+}
+
 .add-education,
 .remove-education {
   padding: 8px;
@@ -70,13 +76,13 @@ hr {
   display: flex;
 }
 
-.list-wrapper > input,
-.category_wrapper > input {
+.list-wrapper>input,
+.category_wrapper>input {
   flex: 1;
 }
 
-.list-wrapper > button,
-.category_wrapper > button {
+.list-wrapper>button,
+.category_wrapper>button {
   width: 35px;
   border: none;
   font-size: 1.2rem;
@@ -86,7 +92,7 @@ hr {
   background-color: #333333;
 }
 
-.category_wrapper > button {
+.category_wrapper>button {
   padding: 0 10px;
   font-size: 0.9rem;
   width: fit-content;
@@ -105,20 +111,23 @@ hr {
 
 .category-btn {
   width: inherit;
+  font-size: 0.85rem;
+  font-weight: bolder;
+  box-shadow: 0px 0px 3px 1px #007480;
 }
 
 li::marker {
   color: #007480;
 }
 
-fieldset > div > input,
+fieldset>div>input,
 textarea {
   width: 100%;
   resize: none;
 }
 
 fieldset {
-  background-color: #c3bcbc2b;
+  background-color: #0074801a;
 }
 
 legend {

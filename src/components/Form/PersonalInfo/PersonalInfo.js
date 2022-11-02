@@ -1,11 +1,9 @@
 import { Component } from "react";
 
-export default class PersonalInfo extends Component {
+class PersonalInfoField extends Component {
   render() {
     return (
-      <fieldset>
-        <legend>PERSONAL INFORMATION</legend>
-
+      <>
         <div className="input-wrapper">
           <div>
             <label htmlFor="first_name">First Name:</label>
@@ -82,6 +80,69 @@ export default class PersonalInfo extends Component {
             cols="50"
           ></textarea>
         </div>
+
+        <div className="personal-btn">
+          <button
+            type="button"
+            className="remove-education"
+            onClick={() => this.props.removePersonalInfo()}
+          >
+            Collapse Field
+          </button>
+        </div>
+      </>
+    );
+  }
+}
+
+export default class PersonalInfo extends Component {
+  state = {
+    personalInfo: [],
+  };
+
+  addPersonalInfo = () => {
+    this.setState({
+      personalInfo: [...this.state.personalInfo, []],
+    });
+  };
+
+  removePersonalInfo = (index) => {
+    const personalInfoCopy = [...this.state.personalInfo];
+    personalInfoCopy.splice(index, 1);
+    this.setState({
+      personalInfo: personalInfoCopy,
+    });
+  };
+
+  render() {
+    const expandBtn = () => {
+      if (this.state.personalInfo.length === 0) return "Expand Field";
+      return "collapse Field";
+    };
+    const emptyArray = this.state.personalInfo.length === 0;
+    return (
+      <fieldset>
+        <legend>PERSONAL INFORMATION</legend>
+        {this.state.personalInfo.map((list, index) => (
+          <>
+            <PersonalInfoField
+              key={index + 18}
+              index={index}
+              addPersonalInfo={() => this.addPersonalInfo()}
+              removePersonalInfo={() => this.removePersonalInfo(index)}
+            />
+            <br key={index + 15} /> <hr key={index + 19} />
+          </>
+        ))}
+        {emptyArray && (
+          <button
+            type="button"
+            className="category-btn"
+            onClick={this.addPersonalInfo}
+          >
+            {expandBtn()}
+          </button>
+        )}
       </fieldset>
     );
   }
