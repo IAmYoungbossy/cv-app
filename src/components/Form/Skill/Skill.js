@@ -4,7 +4,7 @@ import uniqid from "uniqid";
 class SkillList extends Component {
   render() {
     return (
-      <li>
+      <li className={`new ${this.props.klass}`}>
         <div className="skill-wrapper">
           <label htmlFor="skill">Skill {this.props.index + 1}:</label>
           <div className="list-wrapper">
@@ -15,7 +15,12 @@ class SkillList extends Component {
             />
             <button
               type="button"
-              onClick={this.props.removeList}
+              onClick={() => {
+                document
+                  .querySelector(`.${this.props.klass}`)
+                  .classList.add("remove");
+                setTimeout(() => this.props.removeList(), 250);
+              }}
             >
               X
             </button>
@@ -49,13 +54,13 @@ class SkillCategory extends Component {
   render() {
     return (
       <>
-        <div>
+        <div className={`new ${this.props.klass}`}>
           <label htmlFor="skill_category">
             <p className="category">
               <span>Category: {this.props.index + 1}</span>
             </p>
           </label>
-          <div className="category_wrapper">
+          <div className={`category_wrapper ${this.props.klass}`}>
             <input
               type="text"
               id="skill_category"
@@ -63,24 +68,30 @@ class SkillCategory extends Component {
             />
             <button
               type="button"
-              onClick={this.props.removeCategory}
+              onClick={() => {
+                document
+                  .querySelector(`.${this.props.klass}`)
+                  .classList.add("remove");
+                setTimeout(() => this.props.removeCategory(), 290);
+              }}
             >
               Remove
             </button>
           </div>
         </div>
-        <div>
-          <ul>
+        <div className={`new ${this.props.klass}`}>
+          <ul className={`new ${this.props.klass}`}>
             {this.state.skill.map((list, index) => (
               <SkillList
                 key={this.state.skill[index][0]}
                 index={index}
+                klass={this.state.skill[index][0]}
                 removeList={() => this.removeSkill(index)}
               />
             ))}
           </ul>
           <button
-            className="add-list-btn"
+            className={`add-list-btn ${this.props.klass}`}
             type="button"
             onClick={(e) => {
               e.preventDefault();
@@ -90,7 +101,7 @@ class SkillCategory extends Component {
             Add List
           </button>
         </div>
-        <br /> <hr />
+        <br /> <hr className={`new ${this.props.klass}`} />
       </>
     );
   }
@@ -124,15 +135,14 @@ export default class Skill extends Component {
     return (
       <fieldset>
         <legend>SKILLS</legend>
-        {this.state.skillCategory.map((list, index) => {
-          return (
-            <SkillCategory
-              index={index}
-              key={this.state.skillCategory[index][0]}
-              removeCategory={() => this.removeSkillCategory()}
-            />
-          );
-        })}
+        {this.state.skillCategory.map((list, index) => (
+          <SkillCategory
+            index={index}
+            key={this.state.skillCategory[index][0]}
+            klass={this.state.skillCategory[index][0]}
+            removeCategory={() => this.removeSkillCategory()}
+          />
+        ))}
         <button
           type="button"
           className="category-btn"

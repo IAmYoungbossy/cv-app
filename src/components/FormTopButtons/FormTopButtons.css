@@ -12,7 +12,6 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  border-radius: 5px;
   font-weight: bolder;
   background-color: #007480;
   transition: background 400ms;

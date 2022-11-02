@@ -5,10 +5,10 @@ class EducationField extends Component {
   render() {
     return (
       <>
-        <p>
+        <p className={`new ${this.props.klass}`}>
           <span>{this.props.index + 1}</span>
         </p>
-        <div className="input-wrapper">
+        <div className={`input-wrapper new ${this.props.klass}`}>
           <div>
             <label htmlFor="university">University Name:</label>
             <input
@@ -26,7 +26,7 @@ class EducationField extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className={`new ${this.props.klass}`}>
           <label htmlFor="degree">Degree:</label>
           <input
             type="degree"
@@ -34,7 +34,7 @@ class EducationField extends Component {
             name="degree"
           />
         </div>
-        <div className="input-wrapper">
+        <div className={`input-wrapper new ${this.props.klass}`}>
           <div>
             <label htmlFor="from">From:</label>
             <input
@@ -52,7 +52,7 @@ class EducationField extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className={`new ${this.props.klass}`}>
           <label htmlFor="course">Course:</label>
           <input
             type="text"
@@ -60,7 +60,7 @@ class EducationField extends Component {
             name="course"
           />
         </div>
-        <div className="education-btn">
+        <div className={`education-btn new ${this.props.klass}`}>
           <button
             type="button"
             className="add-education"
@@ -71,12 +71,17 @@ class EducationField extends Component {
           <button
             type="button"
             className="remove-education"
-            onClick={() => this.props.removeEducation()}
+            onClick={() => {
+              document
+                .querySelectorAll(`.${this.props.klass}`)
+                .forEach((div) => div.classList.add("remove"));
+              setTimeout(() => this.props.removeEducation(), 300);
+            }}
           >
             Remove Field
           </button>
         </div>
-        <br /> <hr />
+        <br /> <hr className="new" />
       </>
     );
   }
@@ -115,6 +120,7 @@ export default class Education extends Component {
           <EducationField
             key={this.state.education[index][0]}
             index={index}
+            klass={this.state.education[index][0]}
             addEducation={() => this.addEducation()}
             removeEducation={() => this.removeEducation(index)}
           />

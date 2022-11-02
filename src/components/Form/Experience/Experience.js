@@ -5,10 +5,10 @@ class ExperienceField extends Component {
   render() {
     return (
       <>
-        <p>
+        <p className={`new ${this.props.klass}`}>
           <span>{this.props.index + 1}</span>
         </p>
-        <div className="input-wrapper">
+        <div className={`input-wrapper new ${this.props.klass}`}>
           <div>
             <label htmlFor="position">Position:</label>
             <input
@@ -26,7 +26,7 @@ class ExperienceField extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className={`new ${this.props.klass}`}>
           <label htmlFor="city">City:</label>
           <input
             type="city"
@@ -34,7 +34,7 @@ class ExperienceField extends Component {
             name="city"
           />
         </div>
-        <div className="input-wrapper">
+        <div className={`input-wrapper new ${this.props.klass}`}>
           <div>
             <label htmlFor="from">From:</label>
             <input
@@ -52,7 +52,7 @@ class ExperienceField extends Component {
             />
           </div>
         </div>
-        <div className="education-btn">
+        <div className={`education-btn new ${this.props.klass}`}>
           <button
             type="button"
             className="add-education"
@@ -63,12 +63,17 @@ class ExperienceField extends Component {
           <button
             type="button"
             className="remove-education"
-            onClick={() => this.props.removeExperience()}
+            onClick={() => {
+              document
+                .querySelectorAll(`.${this.props.klass}`)
+                .forEach((div) => div.classList.add("remove"));
+              setTimeout(() => this.props.removeExperience(), 300);
+            }}
           >
             Remove Field
           </button>
         </div>
-        <br /> <hr />
+        <br /> <hr className="new" />
       </>
     );
   }
@@ -107,6 +112,7 @@ export default class Experience extends Component {
           <ExperienceField
             key={this.state.experience[index][0]}
             index={index}
+            klass={this.state.experience[index][0]}
             addExperience={() => this.addExperience()}
             removeExperience={() => this.removeExperience(index)}
           />

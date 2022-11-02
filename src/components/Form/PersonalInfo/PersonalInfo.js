@@ -4,7 +4,7 @@ class PersonalInfoField extends Component {
   render() {
     return (
       <>
-        <div className="input-wrapper">
+        <div className="input-wrapper new leave">
           <div>
             <label htmlFor="first_name">First Name:</label>
             <input
@@ -22,7 +22,7 @@ class PersonalInfoField extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className="new  leave">
           <label htmlFor="job_title">Job Title:</label>
           <input
             type="text"
@@ -30,7 +30,7 @@ class PersonalInfoField extends Component {
             name="job_title"
           />
         </div>
-        <div className="input-wrapper">
+        <div className="input-wrapper new  leave">
           <div>
             <label htmlFor="phone_number">Phone Number:</label>
             <input
@@ -48,7 +48,7 @@ class PersonalInfoField extends Component {
             />
           </div>
         </div>
-        <div className="input-wrapper">
+        <div className="input-wrapper new  leave">
           <div>
             <label htmlFor="address">Address:</label>
             <input
@@ -67,7 +67,7 @@ class PersonalInfoField extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className="new  leave">
           <label htmlFor="desc">Description:</label>
           <textarea
             id="desc"
@@ -76,16 +76,21 @@ class PersonalInfoField extends Component {
             cols="50"
           ></textarea>
         </div>
-        <div className="personal-btn">
+        <div className="personal-btn new  leave">
           <button
             type="button"
             className="remove-education"
-            onClick={() => this.props.removePersonalInfo()}
+            onClick={() => {
+              document
+                .querySelectorAll(".leave")
+                .forEach((div) => div.classList.add("remove"));
+              setTimeout(() => this.props.removePersonalInfo(), 300);
+            }}
           >
             Collapse Field
           </button>
         </div>
-        <br /> <hr />
+        <br /> <hr className="new leave" />
       </>
     );
   }
@@ -129,6 +134,7 @@ export default class PersonalInfo extends Component {
         )}
         {expand && (
           <PersonalInfoField
+            className="new"
             addPersonalInfo={() => this.addPersonalInfo()}
             removePersonalInfo={() => this.removePersonalInfo()}
           />

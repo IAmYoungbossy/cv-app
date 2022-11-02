@@ -17,6 +17,7 @@ export default class RippleButton extends Component {
   render() {
     return (
       <button
+        type="button"
         onClick={this.createRipple}
         onMouseEnter={this.createRipple}
       >

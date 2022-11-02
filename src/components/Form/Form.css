@@ -11,6 +11,12 @@ form > fieldset {
   flex-direction: column;
   width: min(600px, 75vw);
   border: 1px solid #00000069;
+  transition: all 0.6s ease-in-out;
+  box-shadow: 0px 2px 4px 0px #000000a3;
+}
+
+fieldset:hover {
+  background-color: #80808082;
   box-shadow: 0px 2px 4px 0px #000000a3;
 }
 
@@ -198,9 +204,55 @@ form > button:last-of-type {
   overflow: hidden;
   position: relative;
   font-weight: bolder;
-  margin: 15px 0 25px 0;
+  margin: 15px 0 45px 0;
   width: min(320px, 40vw);
   background-color: #007480;
   transition: background 400ms;
   box-shadow: 0px 1.5px 2px 1px #002131;
+}
+
+@keyframes append {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes append-animate {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes remove {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}
+
+/* animate new box */
+.new {
+  animation: append-animate 0.3s linear;
+}
+
+.form {
+  animation: append 0.3s linear;
+}
+
+.remove {
+  animation: remove 0.3s linear;
 }
