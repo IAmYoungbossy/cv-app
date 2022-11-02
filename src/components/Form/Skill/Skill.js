@@ -27,12 +27,33 @@ class SkillList extends Component {
 }
 
 class SkillCategory extends Component {
+  state = {
+    skill: [],
+    id: uniqid,
+  };
+
+  addSkill = () => {
+    this.setState({
+      skill: [...this.state.skill, [this.state.id()]],
+    });
+  };
+
+  removeSkill = (index) => {
+    const skillCopy = [...this.state.skill];
+    skillCopy.splice(index, 1);
+    this.setState({
+      skill: skillCopy,
+    });
+  };
+
   render() {
     return (
       <>
         <div>
           <label htmlFor="skill_category">
-            Category {this.props.index + 1}:
+            <p className="category">
+              <span>Category: {this.props.index + 1}</span>
+            </p>
           </label>
           <div className="category_wrapper">
             <input
@@ -48,14 +69,13 @@ class SkillCategory extends Component {
             </button>
           </div>
         </div>
-
         <div>
           <ul>
-            {this.props.skillList.map((list, index) => (
+            {this.state.skill.map((list, index) => (
               <SkillList
-                key={this.props.key}
+                key={this.state.skill[index][0]}
                 index={index}
-                removeList={() => this.props.removeList(index)}
+                removeList={() => this.removeSkill(index)}
               />
             ))}
           </ul>
@@ -64,12 +84,13 @@ class SkillCategory extends Component {
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              this.props.addSkillList();
+              this.addSkill();
             }}
           >
             Add List
           </button>
         </div>
+        <br /> <hr />
       </>
     );
   }
@@ -81,25 +102,9 @@ export default class Skill extends Component {
     id: uniqid,
   };
 
-  addSkillList = (indexCat) => {
-    const skillList = [...this.state.skillCategory];
-    skillList[indexCat].push("List");
-    this.setState({
-      skillCategory: skillList,
-    });
-  };
-
-  removeSkillList = (indexCat, indexLi) => {
-    const skillList = [...this.state.skillCategory];
-    skillList[indexCat].splice(indexLi, 1);
-    this.setState({
-      skillList: skillList,
-    });
-  };
-
   addSkillCategory = () => {
     this.setState({
-      skillCategory: [...this.state.skillCategory, []],
+      skillCategory: [...this.state.skillCategory, [this.state.id()]],
     });
   };
 
@@ -119,16 +124,15 @@ export default class Skill extends Component {
     return (
       <fieldset>
         <legend>SKILLS</legend>
-        {this.state.skillCategory.map((list, index) => (
-          <SkillCategory
-            key={this.state.id()}
-            index={index}
-            addSkillList={() => this.addSkillList(index)}
-            skillList={this.state.skillCategory[index]}
-            removeCategory={() => this.removeSkillCategory()}
-            removeList={(indexLi) => this.removeSkillList(index, indexLi)}
-          />
-        ))}
+        {this.state.skillCategory.map((list, index) => {
+          return (
+            <SkillCategory
+              index={index}
+              key={this.state.skillCategory[index][0]}
+              removeCategory={() => this.removeSkillCategory()}
+            />
+          );
+        })}
         <button
           type="button"
           className="category-btn"

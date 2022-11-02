@@ -170,3 +170,16 @@ input {
 input[type="file"] {
   padding: 0;
 }
+
+.category {
+  margin-bottom: 15px;
+  padding: 2px 2px;
+  color: white;
+  background-color: #0074807a;
+  background-image: linear-gradient(13deg, #000000bd, #00deff75);
+}
+
+.category > span {
+  font-family: fantasy;
+  background-color: #333333;
+}
