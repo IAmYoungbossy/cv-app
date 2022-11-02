@@ -5,6 +5,9 @@ class EducationField extends Component {
   render() {
     return (
       <>
+        <p>
+          <span>{this.props.index + 1}</span>
+        </p>
         <div className="input-wrapper">
           <div>
             <label htmlFor="university">University Name:</label>
@@ -23,7 +26,6 @@ class EducationField extends Component {
             />
           </div>
         </div>
-
         <div>
           <label htmlFor="degree">Degree:</label>
           <input
@@ -32,7 +34,6 @@ class EducationField extends Component {
             name="degree"
           />
         </div>
-
         <div className="input-wrapper">
           <div>
             <label htmlFor="from">From:</label>
@@ -51,7 +52,6 @@ class EducationField extends Component {
             />
           </div>
         </div>
-
         <div>
           <label htmlFor="course">Course:</label>
           <input
@@ -60,7 +60,6 @@ class EducationField extends Component {
             name="course"
           />
         </div>
-
         <div className="education-btn">
           <button
             type="button"
@@ -77,6 +76,7 @@ class EducationField extends Component {
             Remove Field
           </button>
         </div>
+        <br /> <hr />
       </>
     );
   }
@@ -90,7 +90,7 @@ export default class Education extends Component {
 
   addEducation = () => {
     this.setState({
-      education: [...this.state.education, []],
+      education: [...this.state.education, [this.state.id()]],
     });
   };
 
@@ -112,15 +112,12 @@ export default class Education extends Component {
       <fieldset>
         <legend>EDUCATION</legend>
         {this.state.education.map((list, index) => (
-          <>
-            <EducationField
-              key={this.state.id()}
-              index={index}
-              addEducation={() => this.addEducation()}
-              removeEducation={() => this.removeEducation(index)}
-            />
-            <br key={this.state.id()} /> <hr key={this.state.id()} />
-          </>
+          <EducationField
+            key={this.state.education[index][0]}
+            index={index}
+            addEducation={() => this.addEducation()}
+            removeEducation={() => this.removeEducation(index)}
+          />
         ))}
         {emptyArray && (
           <button
