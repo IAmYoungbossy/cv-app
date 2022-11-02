@@ -18,6 +18,7 @@ export default class Form extends Component {
         <Education />
         <Skill onClick={this.getSkillList} >
         </Skill>
+        <button>Submit</button>
       </form>
     );
   }
