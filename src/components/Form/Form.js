@@ -7,6 +7,41 @@ import Skill from "./Skill/Skill";
 import RippleButton from "../RippleButton/RippleButton";
 
 export default class Form extends Component {
+  state = {
+    personalInfo: {
+      fname: "",
+      fnameArr: [],
+      lname: "",
+      lnameArr: [],
+      job: "",
+      jonArr: [],
+      phone: "",
+      phoneArr: [],
+      email: "",
+      emailArr: [],
+      state: "",
+      stateArr: [],
+      photo: "",
+      photoArr: [],
+      desc: "",
+      descArr: [],
+    },
+    personalInfoArr: [],
+  };
+
+  // Make a copy so editing these properties later would not edit the original copy
+  addField = () => {
+    if (this.state.personalInfoArr.length === 1) return;
+    const instanceArr = [
+      ...this.state.personalInfoArr,
+      this.state.personalInfo,
+    ];
+    this.setState({
+      personalInfoArr: instanceArr,
+    });
+  };
+
+
   render() {
     return (
       <form
@@ -15,7 +50,10 @@ export default class Form extends Component {
         method="get"
         acceptCharset="utf-8"
       >
-        <PersonalInfo />
+        <PersonalInfo
+          addField={() => this.addField()}
+          personalInfoArr={() => this.state.personalInfoArr}
+        />
         <Experience />
         <Education />
         <Skill onClick={this.getSkillList}></Skill>

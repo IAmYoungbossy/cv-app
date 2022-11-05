@@ -1,6 +1,40 @@
 import { Component } from "react";
 
 class PersonalInfoField extends Component {
+  state = {
+    fname: "",
+    fnameArr: [],
+    lname: "",
+    lnameArr: [],
+    job: "",
+    jonArr: [],
+    phone: "",
+    phoneArr: [],
+    email: "",
+    emailArr: [],
+    state: "",
+    stateArr: [],
+    desc: "",
+    descArr: [],
+  };
+
+  // addfield = () => {
+  //   const
+  // }
+
+  addInput = (e) => {
+    this.setState({
+      fname: e.target.value,
+    });
+  };
+
+  // pushIt = () => {
+  //   if (this.state.input.trim() === "") return;
+  //   this.setState({
+  //     fnameArr: [...this.state.fnameArr, [this.state.fname, false]],
+  //   });
+  // };
+
   render() {
     return (
       <>
@@ -113,6 +147,14 @@ export default class PersonalInfo extends Component {
     });
   };
 
+  componentDidMount = () => {
+    console.log(this.props.personalInfoArr())
+  }
+
+  componentDidUpdate = () => {
+    console.log(this.props.personalInfoArr())
+  }
+
   render() {
     const expandBtn = () => {
       if (!this.state.personalInfo) return "Expand Field";
@@ -127,7 +169,11 @@ export default class PersonalInfo extends Component {
           <button
             type="button"
             className="category-btn"
-            onClick={this.addPersonalInfo}
+            onClick={() => {
+              this.addPersonalInfo();
+              this.props.addField();
+              
+            }}
           >
             {expandBtn()}
           </button>
