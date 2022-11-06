@@ -1,40 +1,6 @@
 import { Component } from "react";
 
 class PersonalInfoField extends Component {
-  state = {
-    fname: "",
-    fnameArr: [],
-    lname: "",
-    lnameArr: [],
-    job: "",
-    jonArr: [],
-    phone: "",
-    phoneArr: [],
-    email: "",
-    emailArr: [],
-    state: "",
-    stateArr: [],
-    desc: "",
-    descArr: [],
-  };
-
-  // addfield = () => {
-  //   const
-  // }
-
-  addInput = (e) => {
-    this.setState({
-      fname: e.target.value,
-    });
-  };
-
-  // pushIt = () => {
-  //   if (this.state.input.trim() === "") return;
-  //   this.setState({
-  //     fnameArr: [...this.state.fnameArr, [this.state.fname, false]],
-  //   });
-  // };
-
   render() {
     return (
       <>
@@ -43,8 +9,9 @@ class PersonalInfoField extends Component {
             <label htmlFor="first_name">First Name:</label>
             <input
               type="text"
-              id="first_name"
               name="name"
+              id="first_name"
+              onChange={this.props.setFirstName}
             />
           </div>
           <div>
@@ -148,12 +115,12 @@ export default class PersonalInfo extends Component {
   };
 
   componentDidMount = () => {
-    console.log(this.props.personalInfoArr())
-  }
+    console.log(this.props.personalInfoArr());
+  };
 
   componentDidUpdate = () => {
-    console.log(this.props.personalInfoArr())
-  }
+    console.log(this.props.personalInfoArr());
+  };
 
   render() {
     const expandBtn = () => {
@@ -172,7 +139,6 @@ export default class PersonalInfo extends Component {
             onClick={() => {
               this.addPersonalInfo();
               this.props.addField();
-              
             }}
           >
             {expandBtn()}
@@ -181,6 +147,7 @@ export default class PersonalInfo extends Component {
         {expand && (
           <PersonalInfoField
             className="new"
+            setFirstName={(e) => this.props.setFirstName(e)}
             addPersonalInfo={() => this.addPersonalInfo()}
             removePersonalInfo={() => this.removePersonalInfo()}
           />
