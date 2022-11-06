@@ -12,6 +12,7 @@ class PersonalInfoField extends Component {
               name="name"
               id="first_name"
               onChange={this.props.setFirstName}
+              value={this.props.personalInfoArr().fname}
             />
           </div>
           <div>
@@ -21,6 +22,7 @@ class PersonalInfoField extends Component {
               type="text"
               id="last_name"
               onChange={this.props.setLastName}
+              value={this.props.personalInfoArr().lname}
             />
           </div>
         </div>
@@ -31,6 +33,7 @@ class PersonalInfoField extends Component {
             id="job_title"
             name="job_title"
             onChange={this.props.setJob}
+            value={this.props.personalInfoArr().job}
           />
         </div>
         <div className="input-wrapper new  leave">
@@ -41,6 +44,7 @@ class PersonalInfoField extends Component {
               id="phone_number"
               name="phone_number"
               onChange={this.props.setPhone}
+              value={this.props.personalInfoArr().phone}
             />
           </div>
           <div>
@@ -50,6 +54,7 @@ class PersonalInfoField extends Component {
               type="email"
               name="email"
               onChange={this.props.setEmail}
+              value={this.props.personalInfoArr().email}
             />
           </div>
         </div>
@@ -61,6 +66,7 @@ class PersonalInfoField extends Component {
               id="address"
               name="address"
               onChange={this.props.setProvince}
+              value={this.props.personalInfoArr().province}
             />
           </div>
           <div>
@@ -82,6 +88,7 @@ class PersonalInfoField extends Component {
             cols="50"
             name="desc"
             onChange={this.props.setDesc}
+            value={this.props.personalInfoArr().desc}
           ></textarea>
         </div>
         <div className="personal-btn new  leave">
@@ -147,6 +154,7 @@ export default class PersonalInfo extends Component {
             setProvince={(e) => this.props.setProvince(e)}
             addPersonalInfo={() => this.addPersonalInfo()}
             setFirstName={(e) => this.props.setFirstName(e)}
+            personalInfoArr={() => this.props.personalInfoArr()}
             removePersonalInfo={() => this.removePersonalInfo()}
           />
         )}

@@ -62,7 +62,7 @@ export default class Form extends Component {
           setLastName={(e) => this.setLastName(e)}
           setProvince={(e) => this.setProvince(e)}
           setFirstName={(e) => this.setFirstName(e)}
-          personalInfoArr={() => this.state.personalInfoArr}
+          personalInfoArr={() => this.state.personalInfoArr[0]}
         />
         <Experience />
         <Education />
