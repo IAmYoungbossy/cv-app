@@ -17,9 +17,10 @@ class PersonalInfoField extends Component {
           <div>
             <label htmlFor="last_name">Last Name:</label>
             <input
+              name="name"
               type="text"
               id="last_name"
-              name="name"
+              onChange={this.props.setLastName}
             />
           </div>
         </div>
@@ -29,6 +30,7 @@ class PersonalInfoField extends Component {
             type="text"
             id="job_title"
             name="job_title"
+            onChange={this.props.setJob}
           />
         </div>
         <div className="input-wrapper new  leave">
@@ -38,14 +40,16 @@ class PersonalInfoField extends Component {
               type="tel"
               id="phone_number"
               name="phone_number"
+              onChange={this.props.setPhone}
             />
           </div>
           <div>
             <label htmlFor="email">Email Address:</label>
             <input
-              type="email"
               id="email"
+              type="email"
               name="email"
+              onChange={this.props.setEmail}
             />
           </div>
         </div>
@@ -56,14 +60,16 @@ class PersonalInfoField extends Component {
               type="state"
               id="address"
               name="address"
+              onChange={this.props.setProvince}
             />
           </div>
           <div>
             <label htmlFor="photo">Photo:</label>
             <input
-              type="file"
               id="photo"
+              type="file"
               name="photo"
+              onChange={this.props.setPhoto}
               accept="image/jpg, image/jpeg, image/png"
             />
           </div>
@@ -71,10 +77,11 @@ class PersonalInfoField extends Component {
         <div className="new  leave">
           <label htmlFor="desc">Description:</label>
           <textarea
-            id="desc"
-            name="desc"
             rows="4"
+            id="desc"
             cols="50"
+            name="desc"
+            onChange={this.props.setDesc}
           ></textarea>
         </div>
         <div className="personal-btn new  leave">
@@ -102,25 +109,8 @@ export default class PersonalInfo extends Component {
     personalInfo: false,
   };
 
-  addPersonalInfo = () => {
-    this.setState({
-      personalInfo: true,
-    });
-  };
-
-  removePersonalInfo = () => {
-    this.setState({
-      personalInfo: false,
-    });
-  };
-
-  componentDidMount = () => {
-    console.log(this.props.personalInfoArr());
-  };
-
-  componentDidUpdate = () => {
-    console.log(this.props.personalInfoArr());
-  };
+  addPersonalInfo = () => this.setState({ personalInfo: true });
+  removePersonalInfo = () => this.setState({ personalInfo: false });
 
   render() {
     const expandBtn = () => {
@@ -147,8 +137,16 @@ export default class PersonalInfo extends Component {
         {expand && (
           <PersonalInfoField
             className="new"
-            setFirstName={(e) => this.props.setFirstName(e)}
+            setJob={(e) => this.props.setJob(e)}
+            addField={() => this.props.addField()}
+            setDesc={(e) => this.props.setDesc(e)}
+            setPhone={(e) => this.props.setPhone(e)}
+            setEmail={(e) => this.props.setEmail(e)}
+            setPhoto={(e) => this.props.setPhoto(e)}
+            setLastName={(e) => this.props.setLastName(e)}
+            setProvince={(e) => this.props.setProvince(e)}
             addPersonalInfo={() => this.addPersonalInfo()}
+            setFirstName={(e) => this.props.setFirstName(e)}
             removePersonalInfo={() => this.removePersonalInfo()}
           />
         )}
