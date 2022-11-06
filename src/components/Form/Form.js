@@ -41,6 +41,10 @@ export default class Form extends Component {
     });
   };
 
+  setFirstName = () => {
+    const arrCopy = [...this.state.personalInfoArr];
+    console.log(arrCopy[0]);
+  };
 
   render() {
     return (
@@ -52,6 +56,7 @@ export default class Form extends Component {
       >
         <PersonalInfo
           addField={() => this.addField()}
+          setFirstName={() => this.setFirstName()}
           personalInfoArr={() => this.state.personalInfoArr}
         />
         <Experience />
