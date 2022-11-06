@@ -19,6 +19,15 @@ export default class Form extends Component {
       province: "",
     },
     personalInfoArr: [],
+
+    experience: {
+      position: "",
+      company: "",
+      city: "",
+      from: "",
+      to: "",
+    },
+    experienceArr: [],
   };
 
   // Make a copy so editing these properties later would not edit the original copy
@@ -26,13 +35,31 @@ export default class Form extends Component {
     if (this.state.personalInfoArr.length === 1) return;
     const arrCopy = [...this.state.personalInfoArr, this.state.personalInfo];
     this.setState({ personalInfoArr: arrCopy });
+    console.log(this.state.personalInfo);
   };
 
-  setInputField = (e, fname) => {
+  addExperienceField = () => {
+    const arrCopy = [...this.state.experienceArr, this.state.experience];
+    this.setState({ experienceArr: arrCopy });
+    console.log(this.state.experienceArr);
+  };
+  removeExperienceField = (index) => {
+    const arrCopy = [...this.state.experienceArr];
+    arrCopy.splice(index, 1);
+    this.setState({ experience: arrCopy });
+  };
+
+  setInputField = (e, property) => {
     const arrCopy = [...this.state.personalInfoArr];
-    arrCopy[0][`${fname}`] = e.target.value;
+    arrCopy[0][`${property}`] = e.target.value;
     this.setState({ personalInfoArr: arrCopy });
     console.log(arrCopy[0]);
+  };
+  setExperienceField = (e, index, property) => {
+    const arrCopy = [...this.state.experienceArr];
+    arrCopy[index][`${property}`] = e.target.value;
+    this.setState({ experienceArr: arrCopy });
+    console.log(arrCopy);
   };
 
   setJob = (e) => this.setInputField(e, "job");
@@ -43,6 +70,8 @@ export default class Form extends Component {
   setLastName = (e) => this.setInputField(e, "lname");
   setFirstName = (e) => this.setInputField(e, "fname");
   setProvince = (e) => this.setInputField(e, "province");
+
+  setPosition = (e, index) => this.setExperienceField(e, index, "position");
 
   render() {
     return (
@@ -64,7 +93,11 @@ export default class Form extends Component {
           setFirstName={(e) => this.setFirstName(e)}
           personalInfoArr={() => this.state.personalInfoArr[0]}
         />
-        <Experience />
+        <Experience
+          setPosition={(e, index) => this.setPosition(e, index)}
+          addExperienceField={() => this.addExperienceField()}
+          removeExperienceField={(index) => this.removeExperienceField(index)}
+        />
         <Education />
         <Skill onClick={this.getSkillList}></Skill>
         <RippleButton content="Submit" />

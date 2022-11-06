@@ -145,7 +145,6 @@ export default class PersonalInfo extends Component {
           <PersonalInfoField
             className="new"
             setJob={(e) => this.props.setJob(e)}
-            addField={() => this.props.addField()}
             setDesc={(e) => this.props.setDesc(e)}
             setPhone={(e) => this.props.setPhone(e)}
             setEmail={(e) => this.props.setEmail(e)}

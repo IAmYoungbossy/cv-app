@@ -15,6 +15,7 @@ class ExperienceField extends Component {
               type="text"
               id="position"
               name="position"
+              onChange={this.props.setPosition}
             />
           </div>
           <div>
@@ -56,7 +57,10 @@ class ExperienceField extends Component {
           <button
             type="button"
             className="add-education"
-            onClick={() => this.props.addExperience()}
+            onClick={() => {
+              this.props.addExperience();
+              this.props.addExperienceField();
+            }}
           >
             Add Field
           </button>
@@ -67,7 +71,10 @@ class ExperienceField extends Component {
               document
                 .querySelectorAll(`.${this.props.klass}`)
                 .forEach((div) => div.classList.add("remove"));
-              setTimeout(() => this.props.removeExperience(), 300);
+              setTimeout(() => {
+                this.props.removeExperience();
+                this.props.removeExperienceField();
+              }, 300);
             }}
           >
             Remove Field
@@ -115,13 +122,21 @@ export default class Experience extends Component {
             klass={this.state.experience[index][0]}
             addExperience={() => this.addExperience()}
             removeExperience={() => this.removeExperience(index)}
+            setPosition={(e) => this.props.setPosition(e, index)}
+            removeExperienceField={() =>
+              this.props.removeExperienceField(index)
+            }
+            addExperienceField={() => this.props.addExperienceField()}
           />
         ))}
         {emptyArray && (
           <button
             type="button"
             className="category-btn"
-            onClick={this.addExperience}
+            onClick={() => {
+              this.addExperience();
+              this.props.addExperienceField();
+            }}
           >
             {expandBtn()}
           </button>
