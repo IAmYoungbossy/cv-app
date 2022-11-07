@@ -45,7 +45,7 @@ export default class Form extends Component {
   removeExperienceField = (index) => {
     const arrCopy = [...this.state.experienceArr];
     arrCopy.splice(index, 1);
-    this.setState({ experience: arrCopy });
+    this.setState({ experienceArr: arrCopy });
   };
 
   setInputField = (e, property) => {
