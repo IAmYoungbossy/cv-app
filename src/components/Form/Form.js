@@ -38,6 +38,13 @@ export default class Form extends Component {
       to: "",
     },
     educationArr: [],
+
+    skill: {
+      skillListArr: [],
+      skillCategory: "",
+    },
+    skillName: "",
+    skillArr: [],
   };
 
   addToField = (array, object) => {
@@ -55,16 +62,36 @@ export default class Form extends Component {
     this.setState({ [`${array}`]: arrCopy });
   };
 
+  // Add Fields
+  addSkillList = (index) => {
+    const skillListCopy = [
+      ...this.state.skillArr[index].skillListArr,
+      this.state.skillName,
+    ];
+    const skillArrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
+    skillArrCopy[index].skillListArr = skillListCopy;
+    this.setState({ skillArr: skillArrCopy });
+  };
   addPersonalInfoField = () => {
     if (this.state.personalInfoArr.length === 1) return;
     this.addToField("personalInfoArr", "personalInfo");
   };
+  addSkillField = () => this.addToField("skillArr", "skill");
   addExperienceField = () => this.addToField("experienceArr", "experience");
   addEducationField = () => this.addToField("educationArr", "education");
+
+  // Remove Fields
   removeEducationField = (index) => this.removeFromField(index, "educationArr");
+  removeSkillField = (index) => this.removeFromField(index, "educationArr");
   removeExperienceField = (index) =>
     this.removeFromField(index, "experienceArr");
+  removeSkillList = (indexCat, IndexList) => {
+    const skillArrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
+    skillArrCopy[indexCat].skillListArr.splice(IndexList, 1);
+    this.setState({ skillArr: skillArrCopy });
+  };
 
+  // Set Fields
   setPersonalInfoField = (e, index, property) =>
     this.setField(e, index, "personalInfoArr", property);
   setExperienceField = (e, index, property) =>
@@ -135,7 +162,15 @@ export default class Form extends Component {
           setUniversity={(e, index) => this.setUniversity(e, index)}
           removeEducationField={(index) => this.removeEducationField(index)}
         />
-        <Skill />
+        <Skill
+          skillArr={this.state.skillArr}
+          addSkillField={() => this.addSkillField()}
+          addSkillList={(index) => this.addSkillList(index)}
+          removeSkillField={(index) => this.removeSkillField(index)}
+          removeSkillList={(indexCat, IndexList) =>
+            this.removeSkillList(indexCat, IndexList)
+          }
+        />
         <RippleButton content="Submit" />
       </form>
     );
