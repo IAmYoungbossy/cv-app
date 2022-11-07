@@ -81,8 +81,8 @@ class ExperienceField extends Component {
                 .querySelectorAll(`.${this.props.klass}`)
                 .forEach((div) => div.classList.add("remove"));
               setTimeout(() => {
-                this.props.removeExperience();
                 this.props.removeExperienceField();
+                this.props.removeExperience();
               }, 300);
             }}
           >
@@ -110,24 +110,22 @@ export default class Experience extends Component {
   removeExperience = (index) => {
     const experienceCopy = [...this.state.experience];
     experienceCopy.splice(index, 1);
-    this.setState({
-      experience: experienceCopy,
-    });
+    this.setState({ experience: experienceCopy });
   };
 
-  componentDidUpdate = () => console.log(this.props.experienceArr)
-  componentDidMount = () => console.log(this.props.experienceArr)
+  componentDidUpdate = () => console.log(this.props.experienceArr);
+  componentDidMount = () => console.log(this.props.experienceArr);
 
   render() {
     const expandBtn = () => {
       if (this.state.experience.length === 0) return "Expand Field";
       return "Add Category";
     };
-    const emptyArray = this.state.experience.length === 0;
+    const emptyArray = this.props.experienceArr.length === 0;
     return (
       <fieldset>
         <legend>EXPERIENCE</legend>
-        {this.state.experience.map((list, index) => (
+        {this.props.experienceArr.map((list, index) => (
           <ExperienceField
             key={this.state.experience[index][0]}
             index={index}
@@ -151,8 +149,8 @@ export default class Experience extends Component {
             type="button"
             className="category-btn"
             onClick={() => {
-              this.addExperience();
               this.props.addExperienceField();
+              this.addExperience();
             }}
           >
             {expandBtn()}

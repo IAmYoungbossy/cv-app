@@ -135,7 +135,7 @@ export default class PersonalInfo extends Component {
             className="category-btn"
             onClick={() => {
               this.addPersonalInfo();
-              this.props.addField();
+              this.props.addPersonalInfoField();
             }}
           >
             {expandBtn()}

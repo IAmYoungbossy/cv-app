@@ -28,46 +28,58 @@ export default class Form extends Component {
       to: "",
     },
     experienceArr: [],
+
+    education: {
+      university: "",
+      degree: "",
+      course: "",
+      from: "",
+      city: "",
+      to: "",
+    },
+    educationArr: [],
   };
 
-  // Make a copy so editing these properties later would not edit the original copy
-  addField = () => {
-    if (this.state.personalInfoArr.length === 1) return;
-    const arrCopy = [...this.state.personalInfoArr, this.state.personalInfo];
-    this.setState({ personalInfoArr: arrCopy });
-    console.log(this.state.personalInfo);
+  addToField = (array, object) => {
+    const arrCopy = [...this.state[`${array}`], { ...this.state[`${object}`] }];
+    this.setState({ [`${array}`]: arrCopy });
   };
-
-  addExperienceField = () => {
-    const arrCopy = [...this.state.experienceArr, { ...this.state.experience }];
-    this.setState({ experienceArr: arrCopy });
-  };
-  removeExperienceField = (index) => {
-    const arrCopy = [...this.state.experienceArr];
+  removeFromField = (index, array) => {
+    const arrCopy = [...this.state[`${array}`]];
     arrCopy.splice(index, 1);
-    this.setState({ experienceArr: arrCopy });
+    this.setState({ [`${array}`]: arrCopy });
   };
-
-  setInputField = (e, property) => {
-    const arrCopy = [...this.state.personalInfoArr];
-    arrCopy[0][`${property}`] = e.target.value;
-    this.setState({ personalInfoArr: arrCopy });
-    console.log(arrCopy[0]);
-  };
-  setExperienceField = (e, index, property) => {
-    const arrCopy = [...this.state.experienceArr];
+  setField = (e, index, array, property) => {
+    const arrCopy = [...this.state[`${array}`]];
     arrCopy[index][`${property}`] = e.target.value;
-    this.setState({ experienceArr: arrCopy });
+    this.setState({ [`${array}`]: arrCopy });
   };
 
-  setJob = (e) => this.setInputField(e, "job");
-  setDesc = (e) => this.setInputField(e, "desc");
-  setPhone = (e) => this.setInputField(e, "phone");
-  setEmail = (e) => this.setInputField(e, "email");
-  setPhoto = (e) => this.setInputField(e, "photo");
-  setLastName = (e) => this.setInputField(e, "lname");
-  setFirstName = (e) => this.setInputField(e, "fname");
-  setProvince = (e) => this.setInputField(e, "province");
+  addPersonalInfoField = () => {
+    if (this.state.personalInfoArr.length === 1) return;
+    this.addToField("personalInfoArr", "personalInfo");
+  };
+  addExperienceField = () => this.addToField("experienceArr", "experience");
+  addEducationField = () => this.addToField("educationArr", "education");
+  removeEducationField = (index) => this.removeFromField(index, "educationArr");
+  removeExperienceField = (index) =>
+    this.removeFromField(index, "experienceArr");
+
+  setPersonalInfoField = (e, index, property) =>
+    this.setField(e, index, "personalInfoArr", property);
+  setExperienceField = (e, index, property) =>
+    this.setField(e, index, "experienceArr", property);
+  setEducationField = (e, index, property) =>
+    this.setField(e, index, "educationArr", property);
+
+  setJob = (e) => this.setPersonalInfoField(e, 0, "job");
+  setDesc = (e) => this.setPersonalInfoField(e, 0, "desc");
+  setPhone = (e) => this.setPersonalInfoField(e, 0, "phone");
+  setEmail = (e) => this.setPersonalInfoField(e, 0, "email");
+  setPhoto = (e) => this.setPersonalInfoField(e, 0, "photo");
+  setLastName = (e) => this.setPersonalInfoField(e, 0, "lname");
+  setFirstName = (e) => this.setPersonalInfoField(e, 0, "fname");
+  setProvince = (e) => this.setPersonalInfoField(e, 0, "province");
 
   setTo = (e, index) => this.setExperienceField(e, index, "to");
   setFrom = (e, index) => this.setExperienceField(e, index, "from");
@@ -85,7 +97,7 @@ export default class Form extends Component {
       >
         <PersonalInfo
           setJob={(e) => this.setJob(e)}
-          addField={() => this.addField()}
+          addPersonalInfoField={() => this.addPersonalInfoField()}
           setDesc={(e) => this.setDesc(e)}
           setPhone={(e) => this.setPhone(e)}
           setEmail={(e) => this.setEmail(e)}
