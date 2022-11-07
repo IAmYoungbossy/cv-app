@@ -15,6 +15,8 @@ class EducationField extends Component {
               type="text"
               id="university"
               name="university"
+              onChange={this.props.setUniversity}
+              value={this.props.educationArr.university}
             />
           </div>
           <div>
@@ -23,6 +25,8 @@ class EducationField extends Component {
               type="city"
               id="city"
               name="city"
+              onChange={this.props.setCityEdu}
+              value={this.props.educationArr.city}
             />
           </div>
         </div>
@@ -32,6 +36,8 @@ class EducationField extends Component {
             type="degree"
             id="degree"
             name="degree"
+            onChange={this.props.setDegree}
+            value={this.props.educationArr.degree}
           />
         </div>
         <div className={`input-wrapper new ${this.props.klass}`}>
@@ -41,6 +47,8 @@ class EducationField extends Component {
               type="number"
               id="from"
               name="from"
+              onChange={this.props.setFromEdu}
+              value={this.props.educationArr.from}
             />
           </div>
           <div>
@@ -49,6 +57,8 @@ class EducationField extends Component {
               type="number"
               id="to"
               name="to"
+              onChange={this.props.setToEdu}
+              value={this.props.educationArr.to}
             />
           </div>
         </div>
@@ -58,13 +68,18 @@ class EducationField extends Component {
             type="text"
             id="course"
             name="course"
+            onChange={this.props.setCourse}
+            value={this.props.educationArr.course}
           />
         </div>
         <div className={`education-btn new ${this.props.klass}`}>
           <button
             type="button"
             className="add-education"
-            onClick={() => this.props.addEducation()}
+            onClick={() => {
+              this.props.addEducationField();
+              this.props.addEducation();
+            }}
           >
             Add Field
           </button>
@@ -75,7 +90,10 @@ class EducationField extends Component {
               document
                 .querySelectorAll(`.${this.props.klass}`)
                 .forEach((div) => div.classList.add("remove"));
-              setTimeout(() => this.props.removeEducation(), 300);
+              setTimeout(() => {
+                this.props.removeEducationField();
+                this.props.removeEducation();
+              }, 300);
             }}
           >
             Remove Field
@@ -107,6 +125,9 @@ export default class Education extends Component {
     });
   };
 
+  componentDidUpdate = () => console.log(this.props.educationArr);
+  componentDidMount = () => console.log(this.props.educationArr);
+
   render() {
     const expandBtn = () => {
       if (this.state.education.length === 0) return "Expand Field";
@@ -123,13 +144,25 @@ export default class Education extends Component {
             klass={this.state.education[index][0]}
             addEducation={() => this.addEducation()}
             removeEducation={() => this.removeEducation(index)}
+            educationArr={this.props.educationArr[index]}
+            setToEdu={(e) => this.props.setToEdu(e, index)}
+            setDegree={(e) => this.props.setDegree(e, index)}
+            setCourse={(e) => this.props.setCourse(e, index)}
+            addEducationField={() => this.props.addEducationField()}
+            setCityEdu={(e) => this.props.setCityEdu(e, index)}
+            setFromEdu={(e) => this.props.setFromEdu(e, index)}
+            setUniversity={(e) => this.props.setUniversity(e, index)}
+            removeEducationField={() => this.props.removeEducationField(index)}
           />
         ))}
         {emptyArray && (
           <button
             type="button"
             className="category-btn"
-            onClick={this.addEducation}
+            onClick={() => {
+              this.props.addEducationField();
+              this.addEducation();
+            }}
           >
             {expandBtn()}
           </button>

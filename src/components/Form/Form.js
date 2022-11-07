@@ -87,6 +87,13 @@ export default class Form extends Component {
   setCompany = (e, index) => this.setExperienceField(e, index, "company");
   setPosition = (e, index) => this.setExperienceField(e, index, "position");
 
+  setToEdu = (e, index) => this.setEducationField(e, index, "to");
+  setCityEdu = (e, index) => this.setEducationField(e, index, "city");
+  setFromEdu = (e, index) => this.setEducationField(e, index, "from");
+  setDegree = (e, index) => this.setEducationField(e, index, "degree");
+  setCourse = (e, index) => this.setEducationField(e, index, "course");
+  setUniversity = (e, index) => this.setEducationField(e, index, "university");
+
   render() {
     return (
       <form
@@ -97,7 +104,6 @@ export default class Form extends Component {
       >
         <PersonalInfo
           setJob={(e) => this.setJob(e)}
-          addPersonalInfoField={() => this.addPersonalInfoField()}
           setDesc={(e) => this.setDesc(e)}
           setPhone={(e) => this.setPhone(e)}
           setEmail={(e) => this.setEmail(e)}
@@ -106,6 +112,7 @@ export default class Form extends Component {
           setProvince={(e) => this.setProvince(e)}
           setFirstName={(e) => this.setFirstName(e)}
           personalInfoArr={() => this.state.personalInfoArr[0]}
+          addPersonalInfoField={() => this.addPersonalInfoField()}
         />
         <Experience
           experienceArr={this.state.experienceArr}
@@ -117,8 +124,18 @@ export default class Form extends Component {
           setPosition={(e, index) => this.setPosition(e, index)}
           removeExperienceField={(index) => this.removeExperienceField(index)}
         />
-        <Education />
-        <Skill onClick={this.getSkillList}></Skill>
+        <Education
+          educationArr={this.state.educationArr}
+          setToEdu={(e, index) => this.setToEdu(e, index)}
+          setDegree={(e, index) => this.setDegree(e, index)}
+          setCourse={(e, index) => this.setCourse(e, index)}
+          addEducationField={() => this.addEducationField()}
+          setCityEdu={(e, index) => this.setCityEdu(e, index)}
+          setFromEdu={(e, index) => this.setFromEdu(e, index)}
+          setUniversity={(e, index) => this.setUniversity(e, index)}
+          removeEducationField={(index) => this.removeEducationField(index)}
+        />
+        <Skill />
         <RippleButton content="Submit" />
       </form>
     );
