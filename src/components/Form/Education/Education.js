@@ -125,9 +125,6 @@ export default class Education extends Component {
     });
   };
 
-  componentDidUpdate = () => console.log(this.props.educationArr);
-  componentDidMount = () => console.log(this.props.educationArr);
-
   render() {
     const expandBtn = () => {
       if (this.state.education.length === 0) return "Expand Field";

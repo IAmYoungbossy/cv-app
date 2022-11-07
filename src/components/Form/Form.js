@@ -82,7 +82,7 @@ export default class Form extends Component {
 
   // Remove Fields
   removeEducationField = (index) => this.removeFromField(index, "educationArr");
-  removeSkillField = (index) => this.removeFromField(index, "educationArr");
+  removeSkillField = (index) => this.removeFromField(index, "skillArr");
   removeExperienceField = (index) =>
     this.removeFromField(index, "experienceArr");
   removeSkillList = (indexCat, IndexList) => {

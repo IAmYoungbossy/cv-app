@@ -19,7 +19,10 @@ class SkillList extends Component {
                 document
                   .querySelector(`.${this.props.klass}`)
                   .classList.add("remove");
-                setTimeout(() => this.props.removeList(), 250);
+                setTimeout(() => {
+                  this.props.removeSkillList();
+                  this.props.removeList();
+                }, 250);
               }}
             >
               X
@@ -72,7 +75,10 @@ class SkillCategory extends Component {
                 document
                   .querySelector(`.${this.props.klass}`)
                   .classList.add("remove");
-                setTimeout(() => this.props.removeCategory(), 290);
+                setTimeout(() => {
+                  this.props.removeSkillField();
+                  this.props.removeCategory();
+                }, 290);
               }}
             >
               Remove
@@ -87,6 +93,7 @@ class SkillCategory extends Component {
                 index={index}
                 klass={this.state.skill[index][0]}
                 removeList={() => this.removeSkill(index)}
+                removeSkillList={() => this.props.removeSkillList(index)}
               />
             ))}
           </ul>
@@ -95,6 +102,7 @@ class SkillCategory extends Component {
             type="button"
             onClick={(e) => {
               e.preventDefault();
+              this.props.addSkillList();
               this.addSkill();
             }}
           >
@@ -127,6 +135,9 @@ export default class Skill extends Component {
     });
   };
 
+  componentDidUpdate = () => console.log(this.props.skillArr);
+  componentDidMount = () => console.log(this.props.skillArr);
+
   render() {
     const expandBtn = () => {
       if (this.state.skillCategory.length === 0) return "Expand Field";
@@ -141,12 +152,20 @@ export default class Skill extends Component {
             key={this.state.skillCategory[index][0]}
             klass={this.state.skillCategory[index][0]}
             removeCategory={() => this.removeSkillCategory()}
+            addSkillList={() => this.props.addSkillList(index)}
+            removeSkillField={() => this.props.removeSkillField(index)}
+            removeSkillList={(indexList) =>
+              this.props.removeSkillList(index, indexList)
+            }
           />
         ))}
         <button
           type="button"
           className="category-btn"
-          onClick={this.addSkillCategory}
+          onClick={() => {
+            this.props.addSkillField();
+            this.addSkillCategory();
+          }}
         >
           {expandBtn()}
         </button>

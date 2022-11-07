@@ -113,9 +113,6 @@ export default class Experience extends Component {
     this.setState({ experience: experienceCopy });
   };
 
-  componentDidUpdate = () => console.log(this.props.experienceArr);
-  componentDidMount = () => console.log(this.props.experienceArr);
-
   render() {
     const expandBtn = () => {
       if (this.state.experience.length === 0) return "Expand Field";
