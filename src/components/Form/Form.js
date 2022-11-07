@@ -39,9 +39,8 @@ export default class Form extends Component {
   };
 
   addExperienceField = () => {
-    const arrCopy = [...this.state.experienceArr, this.state.experience];
+    const arrCopy = [...this.state.experienceArr, { ...this.state.experience }];
     this.setState({ experienceArr: arrCopy });
-    console.log(this.state.experienceArr);
   };
   removeExperienceField = (index) => {
     const arrCopy = [...this.state.experienceArr];
@@ -59,7 +58,6 @@ export default class Form extends Component {
     const arrCopy = [...this.state.experienceArr];
     arrCopy[index][`${property}`] = e.target.value;
     this.setState({ experienceArr: arrCopy });
-    console.log(arrCopy);
   };
 
   setJob = (e) => this.setInputField(e, "job");
@@ -71,6 +69,10 @@ export default class Form extends Component {
   setFirstName = (e) => this.setInputField(e, "fname");
   setProvince = (e) => this.setInputField(e, "province");
 
+  setTo = (e, index) => this.setExperienceField(e, index, "to");
+  setFrom = (e, index) => this.setExperienceField(e, index, "from");
+  setCity = (e, index) => this.setExperienceField(e, index, "city");
+  setCompany = (e, index) => this.setExperienceField(e, index, "company");
   setPosition = (e, index) => this.setExperienceField(e, index, "position");
 
   render() {
@@ -94,8 +96,13 @@ export default class Form extends Component {
           personalInfoArr={() => this.state.personalInfoArr[0]}
         />
         <Experience
-          setPosition={(e, index) => this.setPosition(e, index)}
+          experienceArr={this.state.experienceArr}
+          setTo={(e, index) => this.setTo(e, index)}
+          setFrom={(e, index) => this.setFrom(e, index)}
+          setCity={(e, index) => this.setCity(e, index)}
+          setCompany={(e, index) => this.setCompany(e, index)}
           addExperienceField={() => this.addExperienceField()}
+          setPosition={(e, index) => this.setPosition(e, index)}
           removeExperienceField={(index) => this.removeExperienceField(index)}
         />
         <Education />

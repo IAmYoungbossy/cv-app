@@ -16,6 +16,7 @@ class ExperienceField extends Component {
               id="position"
               name="position"
               onChange={this.props.setPosition}
+              value={this.props.experienceArr.position}
             />
           </div>
           <div>
@@ -24,6 +25,8 @@ class ExperienceField extends Component {
               type="text"
               id="company"
               name="company"
+              onChange={this.props.setCompany}
+              value={this.props.experienceArr.company}
             />
           </div>
         </div>
@@ -33,6 +36,8 @@ class ExperienceField extends Component {
             type="city"
             id="city"
             name="city"
+            onChange={this.props.setCity}
+            value={this.props.experienceArr.city}
           />
         </div>
         <div className={`input-wrapper new ${this.props.klass}`}>
@@ -42,6 +47,8 @@ class ExperienceField extends Component {
               type="number"
               id="from"
               name="from"
+              onChange={this.props.setFrom}
+              value={this.props.experienceArr.from}
             />
           </div>
           <div>
@@ -50,6 +57,8 @@ class ExperienceField extends Component {
               type="number"
               id="to"
               name="to"
+              onChange={this.props.setTo}
+              value={this.props.experienceArr.to}
             />
           </div>
         </div>
@@ -121,12 +130,17 @@ export default class Experience extends Component {
             index={index}
             klass={this.state.experience[index][0]}
             addExperience={() => this.addExperience()}
+            setTo={(e) => this.props.setTo(e, index)}
+            setFrom={(e) => this.props.setFrom(e, index)}
+            setCity={(e) => this.props.setCity(e, index)}
+            experienceArr={this.props.experienceArr[index]}
+            setCompany={(e) => this.props.setCompany(e, index)}
             removeExperience={() => this.removeExperience(index)}
             setPosition={(e) => this.props.setPosition(e, index)}
+            addExperienceField={() => this.props.addExperienceField()}
             removeExperienceField={() =>
               this.props.removeExperienceField(index)
             }
-            addExperienceField={() => this.props.addExperienceField()}
           />
         ))}
         {emptyArray && (
