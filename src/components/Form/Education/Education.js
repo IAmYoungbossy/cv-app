@@ -15,7 +15,7 @@ class EducationField extends Component {
               type="text"
               id="university"
               name="university"
-              onChange={this.props.setUniversity}
+              onChange={(e) => this.props.setEducationField(e, "university")}
               value={this.props.educationArr.university}
             />
           </div>
@@ -25,7 +25,7 @@ class EducationField extends Component {
               type="city"
               id="city"
               name="city"
-              onChange={this.props.setCityEdu}
+              onChange={(e) => this.props.setEducationField(e, "city")}
               value={this.props.educationArr.city}
             />
           </div>
@@ -36,7 +36,7 @@ class EducationField extends Component {
             type="degree"
             id="degree"
             name="degree"
-            onChange={this.props.setDegree}
+            onChange={(e) => this.props.setEducationField(e, "degree")}
             value={this.props.educationArr.degree}
           />
         </div>
@@ -47,7 +47,7 @@ class EducationField extends Component {
               type="number"
               id="from"
               name="from"
-              onChange={this.props.setFromEdu}
+              onChange={(e) => this.props.setEducationField(e, "from")}
               value={this.props.educationArr.from}
             />
           </div>
@@ -57,7 +57,7 @@ class EducationField extends Component {
               type="number"
               id="to"
               name="to"
-              onChange={this.props.setToEdu}
+              onChange={(e) => this.props.setEducationField(e, "to")}
               value={this.props.educationArr.to}
             />
           </div>
@@ -68,7 +68,7 @@ class EducationField extends Component {
             type="text"
             id="course"
             name="course"
-            onChange={this.props.setCourse}
+            onChange={(e) => this.props.setEducationField(e, "course")}
             value={this.props.educationArr.course}
           />
         </div>
@@ -142,13 +142,10 @@ export default class Education extends Component {
             addEducation={() => this.addEducation()}
             removeEducation={() => this.removeEducation(index)}
             educationArr={this.props.educationArr[index]}
-            setToEdu={(e) => this.props.setToEdu(e, index)}
-            setDegree={(e) => this.props.setDegree(e, index)}
-            setCourse={(e) => this.props.setCourse(e, index)}
+            setEducationField={(e, property) =>
+              this.props.setEducationField(e, index, property)
+            }
             addEducationField={() => this.props.addEducationField()}
-            setCityEdu={(e) => this.props.setCityEdu(e, index)}
-            setFromEdu={(e) => this.props.setFromEdu(e, index)}
-            setUniversity={(e) => this.props.setUniversity(e, index)}
             removeEducationField={() => this.props.removeEducationField(index)}
           />
         ))}

@@ -63,7 +63,7 @@ class SkillCategory extends Component {
               <span>Category: {this.props.index + 1}</span>
             </p>
           </label>
-          <div className={`category_wrapper ${this.props.klass}`}>
+          <div className="category_wrapper">
             <input
               type="text"
               id="skill_category"

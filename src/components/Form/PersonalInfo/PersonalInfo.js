@@ -11,7 +11,7 @@ class PersonalInfoField extends Component {
               type="text"
               name="name"
               id="first_name"
-              onChange={this.props.setFirstName}
+              onChange={(e) => this.props.setPersonalInfoField(e, "fname")}
               value={this.props.personalInfoArr().fname}
             />
           </div>
@@ -21,7 +21,7 @@ class PersonalInfoField extends Component {
               name="name"
               type="text"
               id="last_name"
-              onChange={this.props.setLastName}
+              onChange={(e) => this.props.setPersonalInfoField(e, "lname")}
               value={this.props.personalInfoArr().lname}
             />
           </div>
@@ -32,7 +32,7 @@ class PersonalInfoField extends Component {
             type="text"
             id="job_title"
             name="job_title"
-            onChange={this.props.setJob}
+            onChange={(e) => this.props.setPersonalInfoField(e, "job")}
             value={this.props.personalInfoArr().job}
           />
         </div>
@@ -43,7 +43,7 @@ class PersonalInfoField extends Component {
               type="tel"
               id="phone_number"
               name="phone_number"
-              onChange={this.props.setPhone}
+              onChange={(e) => this.props.setPersonalInfoField(e, "phone")}
               value={this.props.personalInfoArr().phone}
             />
           </div>
@@ -53,7 +53,7 @@ class PersonalInfoField extends Component {
               id="email"
               type="email"
               name="email"
-              onChange={this.props.setEmail}
+              onChange={(e) => this.props.setPersonalInfoField(e, "email")}
               value={this.props.personalInfoArr().email}
             />
           </div>
@@ -65,7 +65,7 @@ class PersonalInfoField extends Component {
               type="state"
               id="address"
               name="address"
-              onChange={this.props.setProvince}
+              onChange={(e) => this.props.setPersonalInfoField(e, "province")}
               value={this.props.personalInfoArr().province}
             />
           </div>
@@ -75,7 +75,7 @@ class PersonalInfoField extends Component {
               id="photo"
               type="file"
               name="photo"
-              onChange={this.props.setPhoto}
+              onChange={(e) => this.props.setPersonalInfoField(e, "photo")}
               accept="image/jpg, image/jpeg, image/png"
             />
           </div>
@@ -87,7 +87,7 @@ class PersonalInfoField extends Component {
             id="desc"
             cols="50"
             name="desc"
-            onChange={this.props.setDesc}
+            onChange={(e) => this.props.setPersonalInfoField(e, "desc")}
             value={this.props.personalInfoArr().desc}
           ></textarea>
         </div>
@@ -144,15 +144,9 @@ export default class PersonalInfo extends Component {
         {expand && (
           <PersonalInfoField
             className="new"
-            setJob={(e) => this.props.setJob(e)}
-            setDesc={(e) => this.props.setDesc(e)}
-            setPhone={(e) => this.props.setPhone(e)}
-            setEmail={(e) => this.props.setEmail(e)}
-            setPhoto={(e) => this.props.setPhoto(e)}
-            setLastName={(e) => this.props.setLastName(e)}
-            setProvince={(e) => this.props.setProvince(e)}
-            addPersonalInfo={() => this.addPersonalInfo()}
-            setFirstName={(e) => this.props.setFirstName(e)}
+            setPersonalInfoField={(e, property) =>
+              this.props.setPersonalInfoField(e, property)
+            }
             personalInfoArr={() => this.props.personalInfoArr()}
             removePersonalInfo={() => this.removePersonalInfo()}
           />
