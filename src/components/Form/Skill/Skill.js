@@ -12,6 +12,7 @@ class SkillList extends Component {
               type="text"
               id="skill"
               name="skill"
+              onChange={(e) => this.props.setSkillList(e)}
             />
             <button
               type="button"
@@ -68,6 +69,7 @@ class SkillCategory extends Component {
               type="text"
               id="skill_category"
               name="skill_category"
+              onChange={(e) => this.props.setSkillCategory(e)}
             />
             <button
               type="button"
@@ -94,6 +96,7 @@ class SkillCategory extends Component {
                 klass={this.state.skill[index][0]}
                 removeList={() => this.removeSkill(index)}
                 removeSkillList={() => this.props.removeSkillList(index)}
+                setSkillList={(e) => this.props.setSkillList(e, index)}
               />
             ))}
           </ul>
@@ -135,9 +138,6 @@ export default class Skill extends Component {
     });
   };
 
-  componentDidUpdate = () => console.log(this.props.skillArr);
-  componentDidMount = () => console.log(this.props.skillArr);
-
   render() {
     const expandBtn = () => {
       if (this.state.skillCategory.length === 0) return "Expand Field";
@@ -157,6 +157,10 @@ export default class Skill extends Component {
             removeSkillList={(indexList) =>
               this.props.removeSkillList(index, indexList)
             }
+            setSkillList={(e, indexList) =>
+              this.props.setSkillList(e, index, indexList)
+            }
+            setSkillCategory={(e) => this.props.setSkillCategory(e, index)}
           />
         ))}
         <button

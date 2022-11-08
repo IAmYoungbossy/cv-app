@@ -44,8 +44,22 @@ export default class App extends Component {
     },
     skillName: "",
     skillArr: [],
+
+    formArr: [],
   };
 
+  // Form action
+  formAction = () => {
+    const arrCopy = [
+      [...this.state.personalInfoArr],
+      [...this.state.experienceArr],
+      [...this.state.educationArr],
+      [...this.state.skillArr],
+    ];
+    this.setState({ formArr: arrCopy });
+  };
+
+  // Reusable methods
   addToField = (array, object) => {
     const arrCopy = [...this.state[`${array}`], { ...this.state[`${object}`] }];
     this.setState({ [`${array}`]: arrCopy });
@@ -97,6 +111,16 @@ export default class App extends Component {
     this.setField(e, index, "experienceArr", property);
   setEducationField = (e, index, property) =>
     this.setField(e, index, "educationArr", property);
+  setSkillList = (e, indexCat, indexList) => {
+    const arrCopy = [...this.state.skillArr];
+    arrCopy[indexCat].skillListArr.splice(indexList, 1, e.target.value);
+    this.setState({ skillArr: arrCopy });
+  };
+  setSkillCategory = (e, index) => {
+    const arrCopy = [...this.state.skillArr];
+    arrCopy[index].skillCategory = e.target.value;
+    this.setState({ skillArr: arrCopy });
+  };
 
   render() {
     return (
@@ -105,31 +129,37 @@ export default class App extends Component {
         <main>
           <FormTopButtons />
           <Form
-          setPersonalInfoField={(e, property) =>
-            this.setPersonalInfoField(e, 0, property)
-          }
-          personalInfoArr={() => this.state.personalInfoArr[0]}
-          addPersonalInfoField={() => this.addPersonalInfoField()}
-          experienceArr={this.state.experienceArr}
-          setExperienceField={(e, index, property) =>
-            this.setExperienceField(e, index, property)
-          }
-          addExperienceField={() => this.addExperienceField()}
-          removeExperienceField={(index) => this.removeExperienceField(index)}
-          educationArr={this.state.educationArr}
-          setEducationField={(e, index, property) =>
-            this.setEducationField(e, index, property)
-          }
-          addEducationField={() => this.addEducationField()}
-          removeEducationField={(index) => this.removeEducationField(index)}
-          skillArr={this.state.skillArr}
-          addSkillField={() => this.addSkillField()}
-          addSkillList={(index) => this.addSkillList(index)}
-          removeSkillField={(index) => this.removeSkillField(index)}
-          removeSkillList={(indexCat, IndexList) =>
-            this.removeSkillList(indexCat, IndexList)
-          }
-           />
+            setPersonalInfoField={(e, property) =>
+              this.setPersonalInfoField(e, 0, property)
+            }
+            personalInfoArr={() => this.state.personalInfoArr[0]}
+            addPersonalInfoField={() => this.addPersonalInfoField()}
+            experienceArr={this.state.experienceArr}
+            setExperienceField={(e, index, property) =>
+              this.setExperienceField(e, index, property)
+            }
+            addExperienceField={() => this.addExperienceField()}
+            removeExperienceField={(index) => this.removeExperienceField(index)}
+            educationArr={this.state.educationArr}
+            setEducationField={(e, index, property) =>
+              this.setEducationField(e, index, property)
+            }
+            addEducationField={() => this.addEducationField()}
+            removeEducationField={(index) => this.removeEducationField(index)}
+            skillArr={this.state.skillArr}
+            addSkillField={() => this.addSkillField()}
+            addSkillList={(index) => this.addSkillList(index)}
+            removeSkillField={(index) => this.removeSkillField(index)}
+            removeSkillList={(indexCat, IndexList) =>
+              this.removeSkillList(indexCat, IndexList)
+            }
+            formArr={this.state.formArr}
+            formAction={() => this.formAction()}
+            setSkillList={(e, indexCat, indexList) =>
+              this.setSkillList(e, indexCat, indexList)
+            }
+            setSkillCategory={(e, index) => this.setSkillCategory(e, index)}
+          />
         </main>
         <Footer />
       </div>

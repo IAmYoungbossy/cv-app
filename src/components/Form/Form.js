@@ -14,6 +14,7 @@ export default class Form extends Component {
         action="get"
         method="get"
         acceptCharset="utf-8"
+        onSubmit={this.props.formAction}
       >
         <PersonalInfo
           setPersonalInfoField={(e, property) =>
@@ -29,7 +30,7 @@ export default class Form extends Component {
           }
           addExperienceField={() => this.props.addExperienceField()}
           removeExperienceField={(index) =>
-            this.props.stateremoveExperienceField(index)
+            this.props.removeExperienceField(index)
           }
         />
         <Education
@@ -50,8 +51,15 @@ export default class Form extends Component {
           removeSkillList={(indexCat, IndexList) =>
             this.props.removeSkillList(indexCat, IndexList)
           }
+          setSkillList={(e, indexCat, indexList) =>
+            this.props.setSkillList(e, indexCat, indexList)
+          }
+          setSkillCategory={(e, index) => this.props.setSkillCategory(e, index)}
         />
-        <RippleButton content="Submit" />
+        <RippleButton
+          content="Submit"
+          formAction={() => this.props.formAction()}
+        />
       </form>
     );
   }
