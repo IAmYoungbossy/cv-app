@@ -57,7 +57,7 @@ export default class Form extends Component {
           setSkillCategory={(e, index) => this.props.setSkillCategory(e, index)}
         />
         <RippleButton
-          content="Submit"
+          content="Print View"
           formAction={() => this.props.formAction()}
         />
       </form>
