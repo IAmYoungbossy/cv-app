@@ -23,7 +23,15 @@ export default class CvApp extends Component {
             <hr />
             <div className="education"></div>
           </div>
-          <div className="personal-details"></div>
+          <div className="personal-details">
+            <div className="photo"></div>
+            <p>Personal Details</p>
+            <hr />
+            <div className="details"></div>
+            <p>Skills</p>
+            <hr />
+            <div className="skills"></div>
+          </div>
         </div>
       </div>
     );

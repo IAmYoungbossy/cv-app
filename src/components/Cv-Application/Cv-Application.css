@@ -33,10 +33,11 @@
 .other-fields {
   flex: 2;
   height: auto;
-  padding: 20px;
+  padding: 20px 10px;
 }
 
-.other-fields > hr {
+.other-fields > hr,
+.personal-details > hr {
   padding: 0px;
   margin-top: 5px;
   margin-left: 1px;
@@ -45,12 +46,20 @@
   border: 0.1px solid #80808094;
 }
 
-.other-fields > p {
+.other-fields > p,
+.personal-details > p {
   color: #0000ac;
   font-weight: bolder;
 }
 
 .personal-details {
   flex: 1;
+  padding: 10px;
   background-color: #ddd;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  border: 1px solid;
 }
