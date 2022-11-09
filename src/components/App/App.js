@@ -1,4 +1,5 @@
 import { Component } from "react";
+import CvApp from "../Cv-Application/Cv-Application";
 import Footer from "../Footer/Footer";
 import Form from "../Form/Form";
 import FormTopButtons from "../FormTopButtons/FormTopButtons";
@@ -160,6 +161,7 @@ export default class App extends Component {
             }
             setSkillCategory={(e, index) => this.setSkillCategory(e, index)}
           />
+          <CvApp />
         </main>
         <Footer />
       </div>
