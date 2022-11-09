@@ -1,0 +1,24 @@
+.cv {
+  margin: auto;
+  min-height: 900px;
+  margin-bottom: 50px;
+  width: min(650px, 80vw);
+  border: 1px solid black;
+}
+
+.cv-header {
+  padding: 25px;
+  background-color: #002d44;
+}
+
+.title {
+  margin: auto;
+  width: fit-content;
+}
+
+.name-title {
+  font-weight: 900;
+  color: #c3bcbc;
+  font-size: 1.3rem;
+  text-align: start;
+}
