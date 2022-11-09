@@ -14,7 +14,9 @@
 }
 
 .title {
+  gap: 5px;
   margin: auto;
+  display: flex;
   width: fit-content;
 }
 
@@ -59,7 +61,10 @@
 }
 
 .photo {
-  width: 100%;
-  height: auto;
+  height: 183px;
+  margin: auto;
   border: 1px solid;
+  margin-bottom: 15px;
+  width: min(183px, 100%);
+  background-color: beige;
 }
