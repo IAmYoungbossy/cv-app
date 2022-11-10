@@ -68,3 +68,8 @@
   width: min(183px, 100%);
   background-color: beige;
 }
+
+.experience-block,
+.education-block {
+  display: flex;
+}
