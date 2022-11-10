@@ -20,8 +20,8 @@ export default class RippleButton extends Component {
         <button
           type="button"
           onClick={(e) => {
-            this.props.changeCondition()
             this.props.formAction();
+            this.props.changeCondition()
             this.createRipple(e);
           }}
           onMouseEnter={this.createRipple}

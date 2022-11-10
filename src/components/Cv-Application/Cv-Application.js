@@ -2,14 +2,15 @@ import { Component } from "react";
 import "./Cv-Application.css";
 
 export default class CvApp extends Component {
-  componentDidUpdate = () => console.log(this.props.formArr)
   render() {
     return (
       <div className="cv">
         <div className="cv-header">
           <div className="title">
-            <p className="name-title">Mr.</p>
-            <h1>Letam Bossman Barinua</h1>
+            <p className="name-title">{this.props.formArr[0][0].job}</p>
+            <h1>
+              {this.props.formArr[0][0].fname} {this.props.formArr[0][0].lname}
+            </h1>
           </div>
         </div>
         <div className="cv-body">
@@ -18,39 +19,59 @@ export default class CvApp extends Component {
             <p>Description</p>
             <hr />
             <div className="desc">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Rhoncus urna neque viverra justo nec ultrices dui sapien.
-                Aliquam eleifend mi in nulla. Facilisi cras fermentum odio eu
-                feugiat pretium nibh ipsum.
-              </p>
+              <p>{this.props.formArr[0][0].desc}</p>
             </div>
             <hr />
             <p>Experience</p>
             <hr />
-            <div className="experience">
-              <div className="experience-block">
-                <p>2013 - 2017</p>
-                <div>
-                  <h4>Full-Stack Web Developer</h4>
-                  <p>Google, Port Harcourt</p>
+            {this.props.formArr[1].map((experience) => {
+              return (
+                <div
+                  key={experience.position}
+                  className="experience"
+                >
+                  <div className="experience-block">
+                    <p>
+                      {experience.from}
+                      {" - "}
+                      {experience.to}
+                    </p>
+                    <div>
+                      <h4>{experience.position}</h4>
+                      <p>
+                        {experience.company}
+                        {", "}
+                        {experience.city}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
             <hr />
             <p>Education</p>
             <hr />
-            <div className="education">
-              <div className="education-block">
-                <p>2013 - 2018</p>
-                <div>
-                  <h4>Rivers State University, Port Harcourt</h4>
-                  <p>Degree: B.Tech</p>
-                  <p>Subject: Agricultural And Environmental Engineering</p>
+            {this.props.formArr[2].map((education) => {
+              return (
+                <div
+                  key={education.university}
+                  className="experience"
+                >
+                  <div className="education-block">
+                    <p>
+                      {education.from} - {education.to}
+                    </p>
+                    <div>
+                      <h4>
+                        {education.university}, {education.city}
+                      </h4>
+                      <p>Degree: {education.degree}</p>
+                      <p>Subject: {education.course}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
           <div className="personal-details">
@@ -60,34 +81,30 @@ export default class CvApp extends Component {
             <hr />
             <div className="details">
               <h4>Adrress</h4>
-              <p>
-                #10 Noble Drive, Oro-Ekpo Street Off Elioparawa Road Ada George
-                Port Harcourt.
-              </p>
-              <h4>Phone Number</h4>
-              <p>07086286373</p>
+              <p>{this.props.formArr[0][0].province}</p>
+              <h4>Phone</h4>
+              <p>{this.props.formArr[0][0].phone}</p>
               <h4>Email</h4>
-              <p>letambarinua@gmail.com</p>
+              <p>{this.props.formArr[0][0].email}</p>
             </div>
             <hr />
             <p>Skills</p>
             <hr />
-            <h5>Category: Web Dev</h5>
-            <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>React</li>
-            </ul>
-            <hr />
-            <h5>Category: Soft Skill</h5>
-            <ul>
-              <li>Critical Thinking</li>
-              <li>Team Work</li>
-              <li>Honest</li>
-              <li>Responsive</li>
-            </ul>
-            <div className="skills"></div>
+            {this.props.formArr[3].map((skill) => {
+              return (
+                <div
+                  key={skill.skillCategory}
+                  className="skills"
+                >
+                  <h5>Category: {skill.skillCategory}</h5>
+                  <ul>
+                    {skill.skillListArr.map((list) => {
+                      return <li key={list}>{list}</li>;
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
