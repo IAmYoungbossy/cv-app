@@ -92,3 +92,11 @@
 .desc > p {
   margin-bottom: 20px;
 }
+
+.details > p {
+  margin-bottom: 15px;
+}
+
+.skills > h5 {
+  margin-top: 15px;
+}
