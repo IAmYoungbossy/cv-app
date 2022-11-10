@@ -55,7 +55,7 @@ export default class CvApp extends Component {
               return (
                 <div
                   key={education.university}
-                  className="experience"
+                  className="education"
                 >
                   <div className="education-block">
                     <p>
