@@ -15,11 +15,25 @@ export default class RippleButton extends Component {
     button.appendChild(circle);
   };
   render() {
+    if (this.props.content === "Print View") {
+      return (
+        <button
+          type="button"
+          onClick={(e) => {
+            this.props.changeCondition()
+            this.props.formAction();
+            this.createRipple(e);
+          }}
+          onMouseEnter={this.createRipple}
+        >
+          {this.props.content}
+        </button>
+      );
+    }
     return (
       <button
         type="button"
         onClick={(e) => {
-          this.props.formAction();
           this.createRipple(e);
         }}
         onMouseEnter={this.createRipple}

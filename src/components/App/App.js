@@ -47,7 +47,11 @@ export default class App extends Component {
     skillArr: [],
 
     formArr: [],
+
+    cvCondition: false,
   };
+
+  changeCondition = () => this.setState({ cvCondition: true });
 
   // Form action
   formAction = () => {
@@ -129,39 +133,46 @@ export default class App extends Component {
         <Header />
         <main>
           <FormTopButtons />
-          <Form
-            setPersonalInfoField={(e, property) =>
-              this.setPersonalInfoField(e, 0, property)
-            }
-            personalInfoArr={() => this.state.personalInfoArr[0]}
-            addPersonalInfoField={() => this.addPersonalInfoField()}
-            experienceArr={this.state.experienceArr}
-            setExperienceField={(e, index, property) =>
-              this.setExperienceField(e, index, property)
-            }
-            addExperienceField={() => this.addExperienceField()}
-            removeExperienceField={(index) => this.removeExperienceField(index)}
-            educationArr={this.state.educationArr}
-            setEducationField={(e, index, property) =>
-              this.setEducationField(e, index, property)
-            }
-            addEducationField={() => this.addEducationField()}
-            removeEducationField={(index) => this.removeEducationField(index)}
-            skillArr={this.state.skillArr}
-            addSkillField={() => this.addSkillField()}
-            addSkillList={(index) => this.addSkillList(index)}
-            removeSkillField={(index) => this.removeSkillField(index)}
-            removeSkillList={(indexCat, IndexList) =>
-              this.removeSkillList(indexCat, IndexList)
-            }
-            formArr={this.state.formArr}
-            formAction={() => this.formAction()}
-            setSkillList={(e, indexCat, indexList) =>
-              this.setSkillList(e, indexCat, indexList)
-            }
-            setSkillCategory={(e, index) => this.setSkillCategory(e, index)}
-          />
-          <CvApp />
+          {this.state.cvCondition === false && (
+            <Form
+              setPersonalInfoField={(e, property) =>
+                this.setPersonalInfoField(e, 0, property)
+              }
+              personalInfoArr={() => this.state.personalInfoArr[0]}
+              addPersonalInfoField={() => this.addPersonalInfoField()}
+              experienceArr={this.state.experienceArr}
+              setExperienceField={(e, index, property) =>
+                this.setExperienceField(e, index, property)
+              }
+              addExperienceField={() => this.addExperienceField()}
+              removeExperienceField={(index) =>
+                this.removeExperienceField(index)
+              }
+              educationArr={this.state.educationArr}
+              setEducationField={(e, index, property) =>
+                this.setEducationField(e, index, property)
+              }
+              addEducationField={() => this.addEducationField()}
+              removeEducationField={(index) => this.removeEducationField(index)}
+              skillArr={this.state.skillArr}
+              addSkillField={() => this.addSkillField()}
+              addSkillList={(index) => this.addSkillList(index)}
+              removeSkillField={(index) => this.removeSkillField(index)}
+              removeSkillList={(indexCat, IndexList) =>
+                this.removeSkillList(indexCat, IndexList)
+              }
+              formArr={this.state.formArr}
+              formAction={() => this.formAction()}
+              setSkillList={(e, indexCat, indexList) =>
+                this.setSkillList(e, indexCat, indexList)
+              }
+              setSkillCategory={(e, index) => this.setSkillCategory(e, index)}
+              changeCondition={() => this.changeCondition()}
+            />
+          )}
+          {this.state.cvCondition === true && (
+            <CvApp formArr={this.state.formArr} />
+          )}
         </main>
         <Footer />
       </div>

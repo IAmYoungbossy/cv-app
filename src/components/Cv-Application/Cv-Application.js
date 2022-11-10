@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./Cv-Application.css";
 
 export default class CvApp extends Component {
+  componentDidUpdate = () => console.log(this.props.formArr)
   render() {
     return (
       <div className="cv">

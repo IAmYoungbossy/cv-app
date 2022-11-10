@@ -59,6 +59,7 @@ export default class Form extends Component {
         <RippleButton
           content="Print View"
           formAction={() => this.props.formAction()}
+          changeCondition={() => this.props.changeCondition()}
         />
       </form>
     );
