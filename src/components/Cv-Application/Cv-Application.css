@@ -76,7 +76,7 @@
 
 .experience-block > div,
 .education-block > div {
-  font-size: 0.90rem;
+  font-size: 0.9rem;
   padding: 0.4rem;
   margin: 0.5rem;
   flex: 4;
@@ -99,4 +99,20 @@
 
 .skills > h5 {
   margin-top: 15px;
+  width: 100%;
+}
+
+.email-para {
+  word-wrap: break-word;
+}
+
+img {
+  width: 100%;
+}
+
+@media sreen and (max-width: 600px) {
+  .cv-body {
+    flex: 1 !important;
+    display: grid !important;
+  }
 }

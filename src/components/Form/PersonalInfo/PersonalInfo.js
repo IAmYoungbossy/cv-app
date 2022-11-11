@@ -75,7 +75,7 @@ class PersonalInfoField extends Component {
               id="photo"
               type="file"
               name="photo"
-              onChange={(e) => this.props.setPersonalInfoField(e, "photo")}
+              onChange={(e) => this.props.setPhotoOnChange(e)}
               accept="image/jpg, image/jpeg, image/png"
             />
           </div>
@@ -119,6 +119,8 @@ export default class PersonalInfo extends Component {
   addPersonalInfo = () => this.setState({ personalInfo: true });
   removePersonalInfo = () => this.setState({ personalInfo: false });
 
+  componentDidUpdate = () => console.log(this.props.personalInfoArr())
+
   render() {
     const expandBtn = () => {
       if (!this.state.personalInfo) return "Expand Field";
@@ -149,6 +151,7 @@ export default class PersonalInfo extends Component {
             }
             personalInfoArr={() => this.props.personalInfoArr()}
             removePersonalInfo={() => this.removePersonalInfo()}
+            setPhotoOnChange={(e) => this.props.setPhotoOnChange(e)}
           />
         )}
       </fieldset>

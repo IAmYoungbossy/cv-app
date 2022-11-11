@@ -14,6 +14,43 @@ export default class CvApp extends Component {
           </div>
         </div>
         <div className="cv-body">
+          <div className="personal-details">
+            <div className="photo">
+              <img
+                src={this.props.formArr[0][0].photo}
+                alt="profile"
+              />
+            </div>
+            <hr />
+            <p>Personal Details</p>
+            <hr />
+            <div className="details">
+              <h4>Adrress</h4>
+              <p>{this.props.formArr[0][0].province}</p>
+              <h4>Phone</h4>
+              <p>{this.props.formArr[0][0].phone}</p>
+              <h4>Email</h4>
+              <p className="email-para">{this.props.formArr[0][0].email}</p>
+            </div>
+            <hr />
+            <p>Skills</p>
+            <hr />
+            {this.props.formArr[3].map((skill) => {
+              return (
+                <div
+                  key={skill.skillCategory}
+                  className="skills"
+                >
+                  <h5>Category: {skill.skillCategory}</h5>
+                  <ul>
+                    {skill.skillListArr.map((list) => {
+                      return <li key={list}>{list}</li>;
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
           <div className="other-fields">
             <hr />
             <p>Description</p>
@@ -69,39 +106,6 @@ export default class CvApp extends Component {
                       <p>Subject: {education.course}</p>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="personal-details">
-            <div className="photo"></div>
-            <hr />
-            <p>Personal Details</p>
-            <hr />
-            <div className="details">
-              <h4>Adrress</h4>
-              <p>{this.props.formArr[0][0].province}</p>
-              <h4>Phone</h4>
-              <p>{this.props.formArr[0][0].phone}</p>
-              <h4>Email</h4>
-              <p>{this.props.formArr[0][0].email}</p>
-            </div>
-            <hr />
-            <p>Skills</p>
-            <hr />
-            {this.props.formArr[3].map((skill) => {
-              return (
-                <div
-                  key={skill.skillCategory}
-                  className="skills"
-                >
-                  <h5>Category: {skill.skillCategory}</h5>
-                  <ul>
-                    {skill.skillListArr.map((list) => {
-                      return <li key={list}>{list}</li>;
-                    })}
-                  </ul>
                 </div>
               );
             })}

@@ -22,6 +22,7 @@ export default class Form extends Component {
           }
           personalInfoArr={() => this.props.personalInfoArr()}
           addPersonalInfoField={() => this.props.addPersonalInfoField()}
+          setPhotoOnChange={(e) => this.props.setPhotoOnChange(e)}
         />
         <Experience
           experienceArr={this.props.experienceArr}

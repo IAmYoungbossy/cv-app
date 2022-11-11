@@ -79,6 +79,12 @@ export default class App extends Component {
     arrCopy[index][`${property}`] = e.target.value;
     this.setState({ [`${array}`]: arrCopy });
   };
+  setPhotoOnChange = (e) => {
+    const photoURL = URL.createObjectURL(e.target.files[0]);
+    const newArr = [...this.state.personalInfoArr];
+    newArr[0].photo = photoURL;
+    this.setState({ personalInfoArr: newArr });
+  };
 
   // Add Fields
   addSkillList = (index) => {
@@ -168,6 +174,7 @@ export default class App extends Component {
               }
               setSkillCategory={(e, index) => this.setSkillCategory(e, index)}
               changeCondition={() => this.changeCondition()}
+              setPhotoOnChange={(e) => this.setPhotoOnChange(e)}
             />
           )}
           {this.state.cvCondition === true && (
