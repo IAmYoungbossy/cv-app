@@ -20,6 +20,12 @@
   width: fit-content;
 }
 
+.cv-body {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .name-title {
   font-weight: 900;
   color: #c3bcbc;
@@ -27,14 +33,10 @@
   text-align: start;
 }
 
-.cv-body {
-  flex: 1;
-  display: flex;
-}
-
 .other-fields {
   flex: 2;
   height: auto;
+  min-width: 275px;
   padding: 20px 10px;
 }
 
@@ -108,11 +110,4 @@
 
 img {
   width: 100%;
-}
-
-@media sreen and (max-width: 600px) {
-  .cv-body {
-    flex: 1 !important;
-    display: grid !important;
-  }
 }
