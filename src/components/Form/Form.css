@@ -140,6 +140,11 @@ hr {
   box-shadow: 0px 0px 0px 1px #007480;
 }
 
+.category-btn:is(:focus, :hover) {
+  background-color: #00434a;
+  outline: 2px solid white;
+}
+
 li::marker {
   color: #007480;
 }
@@ -209,6 +214,11 @@ form > button:last-of-type {
   background-color: #007480;
   transition: background 400ms;
   box-shadow: 0px 1.5px 2px 1px #002131;
+}
+
+form > button:last-of-type:is(:focus, :hover) {
+  background-color: #00434a;
+  outline: 1px solid white;
 }
 
 @keyframes append {
