@@ -19,7 +19,6 @@ export default class App extends Component {
       province: "",
     },
     personalInfoArr: [],
-
     experience: {
       position: "",
       company: "",
@@ -28,7 +27,6 @@ export default class App extends Component {
       to: "",
     },
     experienceArr: [],
-
     education: {
       university: "",
       degree: "",
@@ -38,16 +36,13 @@ export default class App extends Component {
       to: "",
     },
     educationArr: [],
-
     skill: {
       skillListArr: [],
       skillCategory: "",
     },
     skillName: "",
     skillArr: [],
-
     formArr: [],
-
     cvCondition: false,
   };
 
@@ -138,7 +133,7 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <FormTopButtons />
+          <FormTopButtons cvCondition={this.state.cvCondition} />
           {this.state.cvCondition === false && (
             <Form
               setPersonalInfoField={(e, property) =>
