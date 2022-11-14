@@ -127,14 +127,14 @@ export default class Education extends Component {
 
   render() {
     const expandBtn = () => {
-      if (this.state.education.length === 0) return "Expand Field";
+      if (this.props.educationArr.length === 0) return "Expand Field";
       return "Add Category";
     };
-    const emptyArray = this.state.education.length === 0;
+    const emptyArray = this.props.educationArr.length === 0;
     return (
       <fieldset>
         <legend>EDUCATION</legend>
-        {this.state.education.map((list, index) => (
+        {this.props.educationArr.map((list, index) => (
           <EducationField
             key={this.state.education[index][0]}
             index={index}

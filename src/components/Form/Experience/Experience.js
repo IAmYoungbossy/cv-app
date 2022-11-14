@@ -115,7 +115,7 @@ export default class Experience extends Component {
 
   render() {
     const expandBtn = () => {
-      if (this.state.experience.length === 0) return "Expand Field";
+      if (this.props.experienceArr.length === 0) return "Expand Field";
       return "Add Category";
     };
     const emptyArray = this.props.experienceArr.length === 0;

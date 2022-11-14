@@ -119,8 +119,6 @@ export default class PersonalInfo extends Component {
   addPersonalInfo = () => this.setState({ personalInfo: true });
   removePersonalInfo = () => this.setState({ personalInfo: false });
 
-  componentDidUpdate = () => console.log(this.props.personalInfoArr())
-
   render() {
     const expandBtn = () => {
       if (!this.state.personalInfo) return "Expand Field";

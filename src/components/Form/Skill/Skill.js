@@ -146,7 +146,7 @@ export default class Skill extends Component {
     return (
       <fieldset>
         <legend>SKILLS</legend>
-        {this.state.skillCategory.map((list, index) => (
+        {this.props.skillArr.map((list, index) => (
           <SkillCategory
             index={index}
             key={this.state.skillCategory[index][0]}
