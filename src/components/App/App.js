@@ -46,7 +46,12 @@ export default class App extends Component {
     cvCondition: false,
   };
 
-  changeCondition = () => this.setState({ cvCondition: true });
+  changeCondition = () => {
+    let boolean;
+    if (this.state.cvCondition) boolean = false;
+    else boolean = true;
+    this.setState({ cvCondition: boolean });
+  };
 
   // Form action
   formAction = () => {
@@ -133,7 +138,10 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <FormTopButtons cvCondition={this.state.cvCondition} />
+          <FormTopButtons
+            cvCondition={this.state.cvCondition}
+            changeCondition={() => this.changeCondition()}
+          />
           {this.state.cvCondition === false && (
             <Form
               setPersonalInfoField={(e, property) =>

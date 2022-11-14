@@ -21,7 +21,7 @@ export default class RippleButton extends Component {
           type="button"
           onClick={(e) => {
             this.props.formAction();
-            this.props.changeCondition()
+            this.props.changeCondition();
             this.createRipple(e);
           }}
           onMouseEnter={this.createRipple}
@@ -35,6 +35,9 @@ export default class RippleButton extends Component {
         type="button"
         onClick={(e) => {
           this.createRipple(e);
+          if (this.props.content === "Back") {
+            console.log(this.props.changeCondition())
+          }
         }}
         onMouseEnter={this.createRipple}
       >
