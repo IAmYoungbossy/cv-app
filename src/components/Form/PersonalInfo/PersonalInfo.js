@@ -118,6 +118,9 @@ export default class PersonalInfo extends Component {
 
   addPersonalInfo = () => this.setState({ personalInfo: true });
   removePersonalInfo = () => this.setState({ personalInfo: false });
+  componentDidMount = () => {
+    if (this.props.personalInfoArr().length > 0) this.addPersonalInfo();
+  }
 
   render() {
     const expandBtn = () => {
@@ -147,7 +150,7 @@ export default class PersonalInfo extends Component {
             setPersonalInfoField={(e, property) =>
               this.props.setPersonalInfoField(e, property)
             }
-            personalInfoArr={() => this.props.personalInfoArr()}
+            personalInfoArr={() => this.props.personalInfoArr()[0]}
             removePersonalInfo={() => this.removePersonalInfo()}
             setPhotoOnChange={(e) => this.props.setPhotoOnChange(e)}
           />

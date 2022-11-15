@@ -159,7 +159,7 @@ export default class App extends Component {
               setPersonalInfoField={(e, property) =>
                 this.setPersonalInfoField(e, 0, property)
               }
-              personalInfoArr={() => this.state.personalInfoArr[0]}
+              personalInfoArr={() => this.state.personalInfoArr}
               addPersonalInfoField={() => this.addPersonalInfoField()}
               experienceArr={this.state.experienceArr}
               setExperienceField={(e, index, property) =>
