@@ -124,9 +124,9 @@ export default class Experience extends Component {
         <legend>EXPERIENCE</legend>
         {this.props.experienceArr.map((list, index) => (
           <ExperienceField
-            key={this.state.experience[index][0]}
+            key={this.props.experienceArr[index].uniqueID}
             index={index}
-            klass={this.state.experience[index][0]}
+            klass={this.props.experienceArr[index].uniqueID}
             addExperience={() => this.addExperience()}
             setExperienceField={(e, property) =>
               this.props.setExperienceField(e, index, property)

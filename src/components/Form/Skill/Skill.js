@@ -89,16 +89,18 @@ class SkillCategory extends Component {
         </div>
         <div className={`new ${this.props.klass}`}>
           <ul className={`new ${this.props.klass}`}>
-            {this.state.skill.map((list, index) => (
-              <SkillList
-                key={this.state.skill[index][0]}
-                index={index}
-                klass={this.state.skill[index][0]}
-                removeList={() => this.removeSkill(index)}
-                removeSkillList={() => this.props.removeSkillList(index)}
-                setSkillList={(e) => this.props.setSkillList(e, index)}
-              />
-            ))}
+            {this.props.skillListArr[this.props.index].skillListArr.map(
+              (list, index) => (
+                <SkillList
+                  key={list[1]}
+                  index={index}
+                  klass={list[1]}
+                  removeList={() => this.removeSkill(index)}
+                  removeSkillList={() => this.props.removeSkillList(index)}
+                  setSkillList={(e) => this.props.setSkillList(e, index)}
+                />
+              )
+            )}
           </ul>
           <button
             className={`add-list-btn ${this.props.klass}`}
@@ -149,8 +151,8 @@ export default class Skill extends Component {
         {this.props.skillArr.map((list, index) => (
           <SkillCategory
             index={index}
-            key={this.state.skillCategory[index][0]}
-            klass={this.state.skillCategory[index][0]}
+            key={this.props.skillArr[index].uniqueID}
+            klass={this.props.skillArr[index].uniqueID}
             removeCategory={() => this.removeSkillCategory()}
             addSkillList={() => this.props.addSkillList(index)}
             removeSkillField={() => this.props.removeSkillField(index)}
@@ -161,6 +163,7 @@ export default class Skill extends Component {
               this.props.setSkillList(e, index, indexList)
             }
             setSkillCategory={(e) => this.props.setSkillCategory(e, index)}
+            skillListArr={this.props.skillArr}
           />
         ))}
         <button

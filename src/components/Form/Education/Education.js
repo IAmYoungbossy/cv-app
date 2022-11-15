@@ -136,9 +136,9 @@ export default class Education extends Component {
         <legend>EDUCATION</legend>
         {this.props.educationArr.map((list, index) => (
           <EducationField
-            key={this.state.education[index][0]}
+            key={this.props.educationArr[index].uniqueID}
             index={index}
-            klass={this.state.education[index][0]}
+            klass={this.props.educationArr[index].uniqueID}
             addEducation={() => this.addEducation()}
             removeEducation={() => this.removeEducation(index)}
             educationArr={this.props.educationArr[index]}

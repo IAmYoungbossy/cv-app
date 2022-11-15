@@ -33,6 +33,7 @@ export default class Form extends Component {
           removeExperienceField={(index) =>
             this.props.removeExperienceField(index)
           }
+          formArr={this.props.formArr}
         />
         <Education
           educationArr={this.props.educationArr}
