@@ -1,5 +1,4 @@
 import { Component } from "react";
-import uniqid from "uniqid";
 
 class SkillList extends Component {
   render() {
@@ -22,7 +21,7 @@ class SkillList extends Component {
                   .classList.add("remove");
                 setTimeout(() => {
                   this.props.removeSkillList();
-                  this.props.removeList();
+                  // this.props.removeList();
                 }, 250);
               }}
             >
@@ -36,25 +35,6 @@ class SkillList extends Component {
 }
 
 class SkillCategory extends Component {
-  state = {
-    skill: [],
-    id: uniqid,
-  };
-
-  addSkill = () => {
-    this.setState({
-      skill: [...this.state.skill, [this.state.id()]],
-    });
-  };
-
-  removeSkill = (index) => {
-    const skillCopy = [...this.state.skill];
-    skillCopy.splice(index, 1);
-    this.setState({
-      skill: skillCopy,
-    });
-  };
-
   render() {
     return (
       <>
@@ -79,7 +59,6 @@ class SkillCategory extends Component {
                   .classList.add("remove");
                 setTimeout(() => {
                   this.props.removeSkillField();
-                  this.props.removeCategory();
                 }, 290);
               }}
             >
@@ -95,7 +74,6 @@ class SkillCategory extends Component {
                   key={list[1]}
                   index={index}
                   klass={list[1]}
-                  removeList={() => this.removeSkill(index)}
                   removeSkillList={() => this.props.removeSkillList(index)}
                   setSkillList={(e) => this.props.setSkillList(e, index)}
                 />
@@ -108,7 +86,6 @@ class SkillCategory extends Component {
             onClick={(e) => {
               e.preventDefault();
               this.props.addSkillList();
-              this.addSkill();
             }}
           >
             Add List
@@ -121,28 +98,9 @@ class SkillCategory extends Component {
 }
 
 export default class Skill extends Component {
-  state = {
-    skillCategory: [],
-    id: uniqid,
-  };
-
-  addSkillCategory = () => {
-    this.setState({
-      skillCategory: [...this.state.skillCategory, [this.state.id()]],
-    });
-  };
-
-  removeSkillCategory = (index) => {
-    const skillCategoryCopy = [...this.state.skillCategory];
-    skillCategoryCopy.splice(index, 1);
-    this.setState({
-      skillCategory: skillCategoryCopy,
-    });
-  };
-
   render() {
     const expandBtn = () => {
-      if (this.state.skillCategory.length === 0) return "Expand Field";
+      if (this.props.skillArr.length === 0) return "Expand Field";
       return "Add Category";
     };
     return (
@@ -153,7 +111,6 @@ export default class Skill extends Component {
             index={index}
             key={this.props.skillArr[index].uniqueID}
             klass={this.props.skillArr[index].uniqueID}
-            removeCategory={() => this.removeSkillCategory()}
             addSkillList={() => this.props.addSkillList(index)}
             removeSkillField={() => this.props.removeSkillField(index)}
             removeSkillList={(indexList) =>
@@ -171,7 +128,6 @@ export default class Skill extends Component {
           className="category-btn"
           onClick={() => {
             this.props.addSkillField();
-            this.addSkillCategory();
           }}
         >
           {expandBtn()}
