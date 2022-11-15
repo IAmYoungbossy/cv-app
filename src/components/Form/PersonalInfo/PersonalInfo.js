@@ -27,7 +27,7 @@ class PersonalInfoField extends Component {
           </div>
         </div>
         <div className="new  leave">
-          <label htmlFor="job_title">Job Title:</label>
+          <label htmlFor="job_title">Title:</label>
           <input
             type="text"
             id="job_title"
@@ -120,7 +120,7 @@ export default class PersonalInfo extends Component {
   removePersonalInfo = () => this.setState({ personalInfo: false });
   componentDidMount = () => {
     if (this.props.personalInfoArr().length > 0) this.addPersonalInfo();
-  }
+  };
 
   render() {
     const expandBtn = () => {
