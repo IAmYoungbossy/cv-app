@@ -18,6 +18,7 @@ export default class App extends Component {
       email: "",
       photo: "",
       province: "",
+      uniqueID: uniqid,
     },
     personalInfoArr: [],
     experience: {
@@ -44,8 +45,10 @@ export default class App extends Component {
       skillListArr: [],
       skillCategory: "",
     },
-    uniqueID: uniqid,
-    skillName: "",
+    skillData: {
+      uniqueID: uniqid,
+      skillName: "",
+    },
     skillArr: [],
     formArr: [],
     cvCondition: false,
@@ -72,7 +75,8 @@ export default class App extends Component {
   // Reusable methods
   addToField = (array, object) => {
     const arrCopy = [...this.state[`${array}`], { ...this.state[`${object}`] }];
-    arrCopy[arrCopy.length-1].uniqueID = arrCopy[arrCopy.length-1].uniqueID();
+    arrCopy[arrCopy.length - 1].uniqueID =
+      arrCopy[arrCopy.length - 1].uniqueID();
     this.setState({ [`${array}`]: arrCopy });
   };
   removeFromField = (index, array) => {
@@ -96,10 +100,12 @@ export default class App extends Component {
   addSkillList = (index) => {
     const skillListCopy = [
       ...this.state.skillArr[index].skillListArr,
-      [this.state.skillName, uniqid()]
+      { ...this.state.skillData },
     ];
     const skillArrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
     skillArrCopy[index].skillListArr = skillListCopy;
+    const list = skillArrCopy[index].skillListArr
+    list[list.length-1].uniqueID = list[list.length-1].uniqueID();
     this.setState({ skillArr: skillArrCopy });
   };
   addPersonalInfoField = () => {
@@ -129,13 +135,12 @@ export default class App extends Component {
   setEducationField = (e, index, property) =>
     this.setField(e, index, "educationArr", property);
   setSkillList = (e, indexCat, indexList) => {
-    const arrCopy = [...this.state.skillArr];
-    console.log(arrCopy[indexCat].skillListArr)
-    arrCopy[indexCat].skillListArr[0].splice(indexList, 1, e.target.value);
+    const arrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
+    arrCopy[indexCat].skillListArr[indexList].skillName = e.target.value
     this.setState({ skillArr: arrCopy });
   };
   setSkillCategory = (e, index) => {
-    const arrCopy = [...this.state.skillArr];
+    const arrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
     arrCopy[index].skillCategory = e.target.value;
     this.setState({ skillArr: arrCopy });
   };

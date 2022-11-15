@@ -44,7 +44,7 @@ export default class CvApp extends Component {
                   <h5>Category: {skill.skillCategory}</h5>
                   <ul>
                     {skill.skillListArr.map((list) => {
-                      return <li key={list}>{list}</li>;
+                      return <li key={list.uniqueID}>{list.skillName}</li>;
                     })}
                   </ul>
                 </div>

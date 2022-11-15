@@ -12,6 +12,7 @@ class SkillList extends Component {
               id="skill"
               name="skill"
               onChange={(e) => this.props.setSkillList(e)}
+              value={this.props.list}
             />
             <button
               type="button"
@@ -50,6 +51,7 @@ class SkillCategory extends Component {
               id="skill_category"
               name="skill_category"
               onChange={(e) => this.props.setSkillCategory(e)}
+              value={this.props.categoryName}
             />
             <button
               type="button"
@@ -71,9 +73,10 @@ class SkillCategory extends Component {
             {this.props.skillListArr[this.props.index].skillListArr.map(
               (list, index) => (
                 <SkillList
-                  key={list[1]}
+                  key={list.uniqueID}
                   index={index}
-                  klass={list[1]}
+                  klass={list.uniqueID}
+                  list={list.skillName}
                   removeSkillList={() => this.props.removeSkillList(index)}
                   setSkillList={(e) => this.props.setSkillList(e, index)}
                 />
@@ -109,6 +112,7 @@ export default class Skill extends Component {
         {this.props.skillArr.map((list, index) => (
           <SkillCategory
             index={index}
+            categoryName={list.skillCategory}
             key={this.props.skillArr[index].uniqueID}
             klass={this.props.skillArr[index].uniqueID}
             addSkillList={() => this.props.addSkillList(index)}
