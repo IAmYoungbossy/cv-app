@@ -1,5 +1,4 @@
 import { Component } from "react";
-import uniqid from "uniqid";
 
 class ExperienceField extends Component {
   render() {
@@ -67,7 +66,6 @@ class ExperienceField extends Component {
             type="button"
             className="add-education"
             onClick={() => {
-              this.props.addExperience();
               this.props.addExperienceField();
             }}
           >
@@ -82,7 +80,6 @@ class ExperienceField extends Component {
                 .forEach((div) => div.classList.add("remove"));
               setTimeout(() => {
                 this.props.removeExperienceField();
-                this.props.removeExperience();
               }, 300);
             }}
           >
@@ -96,23 +93,6 @@ class ExperienceField extends Component {
 }
 
 export default class Experience extends Component {
-  state = {
-    experience: [],
-    id: uniqid,
-  };
-
-  addExperience = () => {
-    this.setState({
-      experience: [...this.state.experience, [this.state.id()]],
-    });
-  };
-
-  removeExperience = (index) => {
-    const experienceCopy = [...this.state.experience];
-    experienceCopy.splice(index, 1);
-    this.setState({ experience: experienceCopy });
-  };
-
   render() {
     const expandBtn = () => {
       if (this.props.experienceArr.length === 0) return "Expand Field";
@@ -127,12 +107,10 @@ export default class Experience extends Component {
             key={this.props.experienceArr[index].uniqueID}
             index={index}
             klass={this.props.experienceArr[index].uniqueID}
-            addExperience={() => this.addExperience()}
             setExperienceField={(e, property) =>
               this.props.setExperienceField(e, index, property)
             }
             experienceArr={this.props.experienceArr[index]}
-            removeExperience={() => this.removeExperience(index)}
             addExperienceField={() => this.props.addExperienceField()}
             removeExperienceField={() =>
               this.props.removeExperienceField(index)
@@ -145,7 +123,6 @@ export default class Experience extends Component {
             className="category-btn"
             onClick={() => {
               this.props.addExperienceField();
-              this.addExperience();
             }}
           >
             {expandBtn()}
