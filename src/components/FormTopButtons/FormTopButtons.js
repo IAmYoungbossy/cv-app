@@ -12,14 +12,15 @@ export default class FormTopButtons extends Component {
       <div className="form-top-btn">
         <RippleButton
           content={this.alternateBtnFunction("Preview CV", "Edit")}
+          changeCondition={() => this.props.changeCondition()}
+          cvCondition={this.props.cvCondition}
+
         />
         <RippleButton
           content={this.alternateBtnFunction("Auto Fill", "Download")}
         />
         <RippleButton
-          content={this.alternateBtnFunction("Reset", "Back")}
-          cvCondition={this.props.cvCondition}
-          changeCondition={() => this.props.changeCondition()}
+          content={this.alternateBtnFunction("Reset", "Reset")}
         />
       </div>
     );
