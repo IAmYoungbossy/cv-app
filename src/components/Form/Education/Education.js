@@ -1,5 +1,4 @@
 import { Component } from "react";
-import uniqid from "uniqid";
 
 class EducationField extends Component {
   render() {
@@ -78,7 +77,6 @@ class EducationField extends Component {
             className="add-education"
             onClick={() => {
               this.props.addEducationField();
-              this.props.addEducation();
             }}
           >
             Add Field
@@ -92,7 +90,6 @@ class EducationField extends Component {
                 .forEach((div) => div.classList.add("remove"));
               setTimeout(() => {
                 this.props.removeEducationField();
-                this.props.removeEducation();
               }, 300);
             }}
           >
@@ -106,25 +103,6 @@ class EducationField extends Component {
 }
 
 export default class Education extends Component {
-  state = {
-    education: [],
-    id: uniqid,
-  };
-
-  addEducation = () => {
-    this.setState({
-      education: [...this.state.education, [this.state.id()]],
-    });
-  };
-
-  removeEducation = (index) => {
-    const educationCopy = [...this.state.education];
-    educationCopy.splice(index, 1);
-    this.setState({
-      education: educationCopy,
-    });
-  };
-
   render() {
     const expandBtn = () => {
       if (this.props.educationArr.length === 0) return "Expand Field";
@@ -139,8 +117,6 @@ export default class Education extends Component {
             key={this.props.educationArr[index].uniqueID}
             index={index}
             klass={this.props.educationArr[index].uniqueID}
-            addEducation={() => this.addEducation()}
-            removeEducation={() => this.removeEducation(index)}
             educationArr={this.props.educationArr[index]}
             setEducationField={(e, property) =>
               this.props.setEducationField(e, index, property)
@@ -155,7 +131,6 @@ export default class Education extends Component {
             className="category-btn"
             onClick={() => {
               this.props.addEducationField();
-              this.addEducation();
             }}
           >
             {expandBtn()}
