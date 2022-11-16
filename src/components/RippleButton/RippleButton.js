@@ -21,6 +21,10 @@ export default class RippleButton extends Component {
         type="button"
         onClick={(e) => {
           this.createRipple(e);
+          if (this.props.content === "Reset") {
+            this.props.reset();
+            if (this.props.cvCondition) this.props.changeCondition();
+          }
           if (this.props.content === "Auto Fill") this.props.autoFill();
           if (this.props.content === "Edit") this.props.changeCondition();
           if (
