@@ -15,32 +15,31 @@ export default class RippleButton extends Component {
     button.appendChild(circle);
   };
 
+  btnFunctions = (e) => {
+    this.createRipple(e);
+    if (this.props.content === "Reset") {
+      this.props.reset();
+      if (this.props.cvCondition) this.props.changeCondition();
+    }
+    if (this.props.content === "Auto Fill") this.props.autoFill();
+    if (this.props.content === "Edit") this.props.changeCondition();
+    if (this.props.content === "Preview CV" || this.props.content === "Back") {
+      this.props.changeCondition();
+      this.props.preview();
+      this.props.changeBtnContent();
+    }
+    if (this.props.content === "Print View") {
+      this.props.formAction();
+      this.props.changeCondition();
+      this.createRipple(e);
+    }
+  };
+
   render() {
     return (
       <button
         type="button"
-        onClick={(e) => {
-          this.createRipple(e);
-          if (this.props.content === "Reset") {
-            this.props.reset();
-            if (this.props.cvCondition) this.props.changeCondition();
-          }
-          if (this.props.content === "Auto Fill") this.props.autoFill();
-          if (this.props.content === "Edit") this.props.changeCondition();
-          if (
-            this.props.content === "Preview CV" ||
-            this.props.content === "Back"
-          ) {
-            this.props.changeCondition();
-            this.props.preview();
-            this.props.changeBtnContent();
-          }
-          if (this.props.content === "Print View") {
-            this.props.formAction();
-            this.props.changeCondition();
-            this.createRipple(e);
-          }
-        }}
+        onClick={this.btnFunctions}
         onMouseEnter={this.createRipple}
       >
         {this.props.content}
