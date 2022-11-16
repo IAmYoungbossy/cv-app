@@ -1,6 +1,10 @@
 import { Component } from "react";
 
 export default class RippleButton extends Component {
+  state = {
+    state: true,
+  };
+
   createRipple = (event) => {
     const button = event.currentTarget;
     const circle = document.createElement("span");
@@ -14,6 +18,19 @@ export default class RippleButton extends Component {
     if (ripple) ripple.remove();
     button.appendChild(circle);
   };
+
+  changeState = () => {
+    let state;
+    if (this.state.state) state = false;
+    state = true;
+    this.setState({ state: state });
+  };
+
+  btnContent = () => {
+    if (this.state.state) return this.props.content;
+    return "Back";
+  };
+
   render() {
     if (this.props.content === "Print View") {
       return (
@@ -36,10 +53,15 @@ export default class RippleButton extends Component {
         onClick={(e) => {
           this.createRipple(e);
           if (this.props.content === "Edit") this.props.changeCondition();
+          if (this.props.content === "Preview CV") {
+            this.props.preview();
+            this.props.changeCondition();
+            this.changeState();
+          }
         }}
         onMouseEnter={this.createRipple}
       >
-        {this.props.content}
+        {this.btnContent()}
       </button>
     );
   }

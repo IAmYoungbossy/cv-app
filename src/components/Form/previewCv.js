@@ -1,6 +1,6 @@
 import uniqid from "uniqid";
 
-const previewCV = [
+export const previewCV = [
   [
     {
       job: "Mr.",

@@ -14,6 +14,7 @@ export default class FormTopButtons extends Component {
           content={this.alternateBtnFunction("Preview CV", "Edit")}
           changeCondition={() => this.props.changeCondition()}
           cvCondition={this.props.cvCondition}
+          preview={() => this.props.preview()}
         />
         <RippleButton
           content={this.alternateBtnFunction("Auto Fill", "Download")}

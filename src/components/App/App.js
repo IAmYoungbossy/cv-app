@@ -6,6 +6,7 @@ import FormTopButtons from "../FormTopButtons/FormTopButtons";
 import Header from "../Header/Header";
 import uniqid from "uniqid";
 import "./App.css";
+import { previewCV } from "../Form/previewCv";
 
 export default class App extends Component {
   state = {
@@ -72,6 +73,8 @@ export default class App extends Component {
     this.setState({ formArr: arrCopy });
   };
 
+  previewCv = () => this.setState({ formArr: previewCV });
+
   // Reusable methods
   addToField = (array, object) => {
     const arrCopy = [...this.state[`${array}`], { ...this.state[`${object}`] }];
@@ -104,8 +107,8 @@ export default class App extends Component {
     ];
     const skillArrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
     skillArrCopy[index].skillListArr = skillListCopy;
-    const list = skillArrCopy[index].skillListArr
-    list[list.length-1].uniqueID = list[list.length-1].uniqueID();
+    const list = skillArrCopy[index].skillListArr;
+    list[list.length - 1].uniqueID = list[list.length - 1].uniqueID();
     this.setState({ skillArr: skillArrCopy });
   };
   addPersonalInfoField = () => {
@@ -136,7 +139,7 @@ export default class App extends Component {
     this.setField(e, index, "educationArr", property);
   setSkillList = (e, indexCat, indexList) => {
     const arrCopy = JSON.parse(JSON.stringify(this.state.skillArr));
-    arrCopy[indexCat].skillListArr[indexList].skillName = e.target.value
+    arrCopy[indexCat].skillListArr[indexList].skillName = e.target.value;
     this.setState({ skillArr: arrCopy });
   };
   setSkillCategory = (e, index) => {
@@ -153,6 +156,7 @@ export default class App extends Component {
           <FormTopButtons
             cvCondition={this.state.cvCondition}
             changeCondition={() => this.changeCondition()}
+            preview={() => this.previewCv()}
           />
           {this.state.cvCondition === false && (
             <Form
