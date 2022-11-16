@@ -74,6 +74,14 @@ export default class App extends Component {
   };
 
   previewCv = () => this.setState({ formArr: previewCV });
+  autoFill = () => {
+    this.setState({
+      personalInfoArr: previewCV[0],
+      experienceArr: previewCV[1],
+      educationArr: previewCV[2],
+      skillArr: previewCV[3],
+    });
+  };
 
   // Reusable methods
   addToField = (array, object) => {
@@ -157,6 +165,7 @@ export default class App extends Component {
             cvCondition={this.state.cvCondition}
             changeCondition={() => this.changeCondition()}
             preview={() => this.previewCv()}
+            autoFill={() => this.autoFill()}
           />
           {this.state.cvCondition === false && (
             <Form

@@ -1,10 +1,6 @@
 import { Component } from "react";
 
 export default class RippleButton extends Component {
-  state = {
-    state: true,
-  };
-
   createRipple = (event) => {
     const button = event.currentTarget;
     const circle = document.createElement("span");
@@ -19,49 +15,31 @@ export default class RippleButton extends Component {
     button.appendChild(circle);
   };
 
-  changeState = () => {
-    let state;
-    if (this.state.state) state = false;
-    state = true;
-    this.setState({ state: state });
-  };
-
-  btnContent = () => {
-    if (this.state.state) return this.props.content;
-    return "Back";
-  };
-
   render() {
-    if (this.props.content === "Print View") {
-      return (
-        <button
-          type="button"
-          onClick={(e) => {
-            this.props.formAction();
-            this.props.changeCondition();
-            this.createRipple(e);
-          }}
-          onMouseEnter={this.createRipple}
-        >
-          {this.props.content}
-        </button>
-      );
-    }
     return (
       <button
         type="button"
         onClick={(e) => {
           this.createRipple(e);
+          if (this.props.content === "Auto Fill") this.props.autoFill();
           if (this.props.content === "Edit") this.props.changeCondition();
-          if (this.props.content === "Preview CV") {
-            this.props.preview();
+          if (
+            this.props.content === "Preview CV" ||
+            this.props.content === "Back"
+          ) {
             this.props.changeCondition();
-            this.changeState();
+            this.props.preview();
+            this.props.changeBtnContent();
+          }
+          if (this.props.content === "Print View") {
+            this.props.formAction();
+            this.props.changeCondition();
+            this.createRipple(e);
           }
         }}
         onMouseEnter={this.createRipple}
       >
-        {this.btnContent()}
+        {this.props.content}
       </button>
     );
   }
