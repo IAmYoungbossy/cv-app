@@ -35,6 +35,7 @@ export default class FormTopButtons extends Component {
         <RippleButton
           content={this.alternateBtnFunction("Auto Fill", "Download")}
           autoFill={() => this.props.autoFill()}
+          printCV={() => this.props.printCV()}
         />
         <RippleButton
           content={this.alternateBtnFunction("Reset", "Reset")}

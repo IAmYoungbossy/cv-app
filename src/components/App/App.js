@@ -7,6 +7,8 @@ import Header from "../Header/Header";
 import uniqid from "uniqid";
 import "./App.css";
 import { previewCV } from "../Form/previewCv";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default class App extends Component {
   state = {
@@ -166,6 +168,16 @@ export default class App extends Component {
     this.setState({ skillArr: arrCopy });
   };
 
+  printCV = () => {
+    const cvPage = document.querySelector(".cv");
+    html2canvas(cvPage).then((canvas) => {
+      const imgURL = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+      pdf.addImage(imgURL, "JPEG", 1, 1);
+      pdf.save("download.pdf");
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -177,6 +189,7 @@ export default class App extends Component {
             preview={() => this.previewCv()}
             autoFill={() => this.autoFill()}
             reset={() => this.reset()}
+            printCV={() => this.printCV()}
           />
           {this.state.cvCondition === false && (
             <Form

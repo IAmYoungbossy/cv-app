@@ -2,10 +2,10 @@
   margin: auto;
   display: flex;
   margin-top: 25px;
-  min-height: 900px;
+  min-height: 297mm;
   margin-bottom: 50px;
   flex-direction: column;
-  width: min(650px, 80vw);
+  width: min(210mm, 80vw);
   box-shadow: 0px 2px 7px 4px #000000a3;
 }
 
