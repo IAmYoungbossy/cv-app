@@ -58,11 +58,15 @@ export default class Form extends Component {
           }
           setSkillCategory={(e, index) => this.props.setSkillCategory(e, index)}
         />
+        {this.props.errorMsg && (
+          <p>Expand "Personal Info" field to Print View</p>
+        )}
         <RippleButton
           content="Print View"
           personalInfoArr={() => this.props.personalInfoArr()}
           formAction={() => this.props.formAction()}
           changeCondition={() => this.props.changeCondition()}
+          checkPersonalInfo={() => this.props.checkPersonalInfo()}
         />
       </form>
     );

@@ -54,6 +54,7 @@ export default class App extends Component {
     },
     skillArr: [],
     formArr: [],
+    errorMsg: false,
     cvCondition: false,
   };
 
@@ -76,7 +77,6 @@ export default class App extends Component {
   };
 
   previewCv = () => this.setState({ formArr: previewCV });
-
   autoFill = () => {
     this.setState({
       personalInfoArr: previewCV[0],
@@ -93,6 +93,10 @@ export default class App extends Component {
       educationArr: [],
       skillArr: [],
     });
+  };
+
+  checkPersonalInfo = () => {
+    this.setState({ errorMsg: true });
   };
 
   // Reusable methods
@@ -132,6 +136,7 @@ export default class App extends Component {
     this.setState({ skillArr: skillArrCopy });
   };
   addPersonalInfoField = () => {
+    this.setState({ errorMsg: false });
     if (this.state.personalInfoArr.length === 1) return;
     this.addToField("personalInfoArr", "personalInfo");
   };
@@ -170,8 +175,8 @@ export default class App extends Component {
 
   printCV = () => {
     const cvPage = document.querySelector(".cv");
-    cvPage.classList.add("cv2")
-    setTimeout(()=> cvPage.classList.remove("cv2"), 0)
+    cvPage.classList.add("cv2");
+    setTimeout(() => cvPage.classList.remove("cv2"), 0);
     html2canvas(cvPage).then((canvas) => {
       const imgURL = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
@@ -229,6 +234,8 @@ export default class App extends Component {
               setSkillCategory={(e, index) => this.setSkillCategory(e, index)}
               changeCondition={() => this.changeCondition()}
               setPhotoOnChange={(e) => this.setPhotoOnChange(e)}
+              errorMsg={this.state.errorMsg}
+              checkPersonalInfo={() => this.checkPersonalInfo()}
             />
           )}
           {this.state.cvCondition === true && (

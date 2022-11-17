@@ -30,7 +30,10 @@ export default class RippleButton extends Component {
       this.props.changeBtnContent();
     }
     if (this.props.content === "Print View") {
-      if (this.props.personalInfoArr().length < 1) return;
+      if (this.props.personalInfoArr().length < 1) {
+        this.props.checkPersonalInfo();
+        return;
+      }
       this.props.formAction();
       this.props.changeCondition();
       this.createRipple(e);

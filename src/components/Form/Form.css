@@ -41,6 +41,11 @@ fieldset > p > span {
   background-color: #333333;
 }
 
+form > p {
+  color: red;
+  font-size: 0.9rem;
+}
+
 .input-wrapper > div {
   width: 100%;
 }
