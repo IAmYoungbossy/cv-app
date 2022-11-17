@@ -62,7 +62,7 @@ class ExperienceField extends Component {
           </div>
         </div>
         <div className={`education-btn new ${this.props.klass}`}>
-          <button
+          {this.props.experienceArrLength === this.props.index+1 && <button
             type="button"
             className="add-education"
             onClick={() => {
@@ -70,7 +70,7 @@ class ExperienceField extends Component {
             }}
           >
             Add Field
-          </button>
+          </button>}
           <button
             type="button"
             className="remove-education"
@@ -111,6 +111,7 @@ export default class Experience extends Component {
               this.props.setExperienceField(e, index, property)
             }
             experienceArr={this.props.experienceArr[index]}
+            experienceArrLength={this.props.experienceArr.length}
             addExperienceField={() => this.props.addExperienceField()}
             removeExperienceField={() =>
               this.props.removeExperienceField(index)

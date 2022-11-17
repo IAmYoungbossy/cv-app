@@ -72,7 +72,7 @@ class EducationField extends Component {
           />
         </div>
         <div className={`education-btn new ${this.props.klass}`}>
-          <button
+          {this.props.educationArrLength === this.props.index+1 && <button
             type="button"
             className="add-education"
             onClick={() => {
@@ -80,7 +80,7 @@ class EducationField extends Component {
             }}
           >
             Add Field
-          </button>
+          </button>}
           <button
             type="button"
             className="remove-education"
@@ -118,6 +118,7 @@ export default class Education extends Component {
             index={index}
             klass={this.props.educationArr[index].uniqueID}
             educationArr={this.props.educationArr[index]}
+            educationArrLength={this.props.educationArr.length}
             setEducationField={(e, property) =>
               this.props.setEducationField(e, index, property)
             }

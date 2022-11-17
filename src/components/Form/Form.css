@@ -74,7 +74,7 @@ li {
 .education-btn {
   gap: 5px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .personal-btn {
@@ -158,6 +158,8 @@ fieldset > div > input,
 textarea {
   width: 100%;
   resize: none;
+  padding: 5px;
+  font-family: sans-serif;
 }
 
 fieldset {
