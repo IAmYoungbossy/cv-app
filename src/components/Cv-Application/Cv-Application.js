@@ -41,7 +41,7 @@ export default class CvApp extends Component {
             {this.props.formArr[3].map((skill) => {
               return (
                 <div
-                  key={skill.skillCategory}
+                  key={skill.uniqueID}
                   className="skills"
                 >
                   <h5>Category: {skill.skillCategory}</h5>

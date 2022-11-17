@@ -35,6 +35,7 @@ export default class FormTopButtons extends Component {
         <RippleButton
           content={this.alternateBtnFunction("Auto Fill", "Download")}
           personalInfoArr={() => this.props.personalInfoArr()}
+          addPersonalInfo={() => this.props.addPersonalInfo()}
           autoFill={() => this.props.autoFill()}
           printCV={() => this.props.printCV()}
         />
@@ -43,6 +44,7 @@ export default class FormTopButtons extends Component {
           reset={() => this.props.reset()}
           cvCondition={this.props.cvCondition}
           changeCondition={() => this.props.changeCondition()}
+          addPersonalInfo={() => this.props.addPersonalInfo()}
         />
       </div>
     );

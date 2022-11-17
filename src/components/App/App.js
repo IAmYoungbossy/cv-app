@@ -56,7 +56,11 @@ export default class App extends Component {
     formArr: [],
     errorMsg: false,
     cvCondition: false,
+    personalInfoState: false,
   };
+
+  addPersonalInfo = () => this.setState({ personalInfoState: true });
+  removePersonalInfo = () => this.setState({ personalInfoState: false });
 
   changeCondition = () => {
     let boolean;
@@ -87,11 +91,19 @@ export default class App extends Component {
   };
 
   reset = () => {
+    const skillCategory = JSON.parse(JSON.stringify(this.state.skill));
+    const experience = JSON.parse(JSON.stringify(this.state.experience));
+    const education = JSON.parse(JSON.stringify(this.state.education));
+    const personalInfo = JSON.parse(JSON.stringify(this.state.personalInfo));
+    skillCategory.uniqueID = uniqid();
+    experience.uniqueID = uniqid();
+    education.uniqueID = uniqid();
+    personalInfo.uniqueID = uniqid();
     this.setState({
-      personalInfoArr: [],
-      experienceArr: [],
-      educationArr: [],
-      skillArr: [],
+      personalInfoArr: [personalInfo],
+      experienceArr: [experience],
+      educationArr: [education],
+      skillArr: [skillCategory],
     });
   };
 
@@ -193,6 +205,7 @@ export default class App extends Component {
           <FormTopButtons
             cvCondition={this.state.cvCondition}
             changeCondition={() => this.changeCondition()}
+            addPersonalInfo={() => this.addPersonalInfo()}
             preview={() => this.previewCv()}
             autoFill={() => this.autoFill()}
             reset={() => this.reset()}
@@ -236,6 +249,9 @@ export default class App extends Component {
               setPhotoOnChange={(e) => this.setPhotoOnChange(e)}
               errorMsg={this.state.errorMsg}
               checkPersonalInfo={() => this.checkPersonalInfo()}
+              personalInfoState={this.state.personalInfoState}
+              removePersonalInfo={() => this.removePersonalInfo()}
+              addPersonalInfo={() => this.addPersonalInfo()}
             />
           )}
           {this.state.cvCondition === true && (

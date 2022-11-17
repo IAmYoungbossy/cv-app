@@ -112,23 +112,17 @@ class PersonalInfoField extends Component {
 }
 
 export default class PersonalInfo extends Component {
-  state = {
-    personalInfo: false,
-  };
-
-  addPersonalInfo = () => this.setState({ personalInfo: true });
-  removePersonalInfo = () => this.setState({ personalInfo: false });
   componentDidMount = () => {
-    if (this.props.personalInfoArr().length > 0) this.addPersonalInfo();
+    if (this.props.personalInfoArr().length > 0) this.props.addPersonalInfo();
   };
 
   render() {
     const expandBtn = () => {
-      if (!this.state.personalInfo) return "Expand Field";
+      if (!this.props.personalInfoState) return "Expand Field";
       return "collapse Field";
     };
-    const collapse = this.state.personalInfo === false;
-    const expand = this.state.personalInfo === true;
+    const collapse = this.props.personalInfoState === false;
+    const expand = this.props.personalInfoState === true;
     return (
       <fieldset>
         <legend>PERSONAL INFO</legend>
@@ -137,7 +131,7 @@ export default class PersonalInfo extends Component {
             type="button"
             className="category-btn"
             onClick={() => {
-              this.addPersonalInfo();
+              this.props.addPersonalInfo();
               this.props.addPersonalInfoField();
             }}
           >
@@ -151,7 +145,7 @@ export default class PersonalInfo extends Component {
               this.props.setPersonalInfoField(e, property)
             }
             personalInfoArr={() => this.props.personalInfoArr()[0]}
-            removePersonalInfo={() => this.removePersonalInfo()}
+            removePersonalInfo={() => this.props.removePersonalInfo()}
             setPhotoOnChange={(e) => this.props.setPhotoOnChange(e)}
           />
         )}
