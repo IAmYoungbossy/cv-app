@@ -21,7 +21,7 @@ export default class RippleButton extends Component {
       this.props.reset();
       if (this.props.cvCondition) this.props.changeCondition();
     }
-    if (this.props.content === "Download") this.props.printCV()
+    if (this.props.content === "Download") this.props.printCV();
     if (this.props.content === "Auto Fill") this.props.autoFill();
     if (this.props.content === "Edit") this.props.changeCondition();
     if (this.props.content === "Preview CV" || this.props.content === "Back") {
@@ -30,6 +30,7 @@ export default class RippleButton extends Component {
       this.props.changeBtnContent();
     }
     if (this.props.content === "Print View") {
+      if (this.props.personalInfoArr().length < 1) return;
       this.props.formAction();
       this.props.changeCondition();
       this.createRipple(e);
