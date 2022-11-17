@@ -4,7 +4,10 @@ import "./Cv-Application.css";
 export default class CvApp extends Component {
   render() {
     return (
-      <div className="cv">
+      <div
+        className="cv"
+        id="print"
+      >
         <div className="cv-header">
           <div className="title">
             <p className="name-title">{this.props.formArr[0][0].job}</p>

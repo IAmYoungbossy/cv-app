@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import CvApp from "../Cv-Application/Cv-Application";
 import Footer from "../Footer/Footer";
 import Form from "../Form/Form";
@@ -170,10 +170,12 @@ export default class App extends Component {
 
   printCV = () => {
     const cvPage = document.querySelector(".cv");
+    cvPage.classList.add("cv2")
+    setTimeout(()=> cvPage.classList.remove("cv2"), 0)
     html2canvas(cvPage).then((canvas) => {
       const imgURL = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
-      pdf.addImage(imgURL, "JPEG", 1, 1);
+      pdf.addImage(imgURL, "JPEG", 0, 0);
       pdf.save("download.pdf");
     });
   };
