@@ -188,7 +188,7 @@ export default class App extends Component {
   printCV = () => {
     const cvPage = document.querySelector(".cv");
     cvPage.classList.add("cv2");
-    setTimeout(() => cvPage.classList.remove("cv2"), 0);
+    setTimeout(() => cvPage.classList.remove("cv2"), 50);
     html2canvas(cvPage).then((canvas) => {
       const imgURL = canvas.toDataURL("image/png");
       const pdf = new jsPDF();

@@ -112,6 +112,7 @@ fieldset > hr {
 .list-wrapper > input,
 .category_wrapper > input {
   flex: 1;
+  width: 100%;
 }
 
 .list-wrapper > button,

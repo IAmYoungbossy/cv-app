@@ -23,7 +23,6 @@ class SkillList extends Component {
                   .classList.add("remove");
                 setTimeout(() => {
                   this.props.removeSkillList();
-                  // this.props.removeList();
                 }, 250);
               }}
             >
