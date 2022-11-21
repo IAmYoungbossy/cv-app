@@ -14,6 +14,7 @@ class EducationField extends Component {
               type="text"
               id="university"
               name="university"
+              placeholder="Rivers State University"
               onChange={(e) => this.props.setEducationField(e, "university")}
               value={this.props.educationArr.university}
             />
@@ -24,6 +25,7 @@ class EducationField extends Component {
               type="city"
               id="city"
               name="city"
+              placeholder="Port Harcourt"
               onChange={(e) => this.props.setEducationField(e, "city")}
               value={this.props.educationArr.city}
             />
@@ -35,6 +37,7 @@ class EducationField extends Component {
             type="degree"
             id="degree"
             name="degree"
+            placeholder="B.Tech"
             onChange={(e) => this.props.setEducationField(e, "degree")}
             value={this.props.educationArr.degree}
           />
@@ -46,6 +49,7 @@ class EducationField extends Component {
               type="number"
               id="from"
               name="from"
+              placeholder="2013"
               onChange={(e) => this.props.setEducationField(e, "from")}
               value={this.props.educationArr.from}
             />
@@ -56,6 +60,7 @@ class EducationField extends Component {
               type="number"
               id="to"
               name="to"
+              placeholder="2018"
               onChange={(e) => this.props.setEducationField(e, "to")}
               value={this.props.educationArr.to}
             />
@@ -67,6 +72,7 @@ class EducationField extends Component {
             type="text"
             id="course"
             name="course"
+            placeholder="Agricultural And Environmental Engineering"
             onChange={(e) => this.props.setEducationField(e, "course")}
             value={this.props.educationArr.course}
           />

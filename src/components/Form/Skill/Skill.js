@@ -11,6 +11,7 @@ class SkillList extends Component {
               type="text"
               id="skill"
               name="skill"
+              placeholder="HTML"
               onChange={(e) => this.props.setSkillList(e)}
               value={this.props.list}
             />
@@ -50,6 +51,7 @@ class SkillCategory extends Component {
               type="text"
               id="skill_category"
               name="skill_category"
+              placeholder="Web Development Basic"
               onChange={(e) => this.props.setSkillCategory(e)}
               value={this.props.categoryName}
             />

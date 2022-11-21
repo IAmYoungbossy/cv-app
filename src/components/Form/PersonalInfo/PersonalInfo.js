@@ -11,6 +11,7 @@ class PersonalInfoField extends Component {
               type="text"
               name="name"
               id="first_name"
+              placeholder="Joe"
               onChange={(e) => this.props.setPersonalInfoField(e, "fname")}
               value={this.props.personalInfoArr().fname}
             />
@@ -21,6 +22,7 @@ class PersonalInfoField extends Component {
               name="name"
               type="text"
               id="last_name"
+              placeholder="Biden"
               onChange={(e) => this.props.setPersonalInfoField(e, "lname")}
               value={this.props.personalInfoArr().lname}
             />
@@ -32,6 +34,7 @@ class PersonalInfoField extends Component {
             type="text"
             id="job_title"
             name="job_title"
+            placeholder="Mr./Mrs."
             onChange={(e) => this.props.setPersonalInfoField(e, "job")}
             value={this.props.personalInfoArr().job}
           />
@@ -43,6 +46,7 @@ class PersonalInfoField extends Component {
               type="tel"
               id="phone_number"
               name="phone_number"
+              placeholder="+2347074636475"
               onChange={(e) => this.props.setPersonalInfoField(e, "phone")}
               value={this.props.personalInfoArr().phone}
             />
@@ -53,6 +57,7 @@ class PersonalInfoField extends Component {
               id="email"
               type="email"
               name="email"
+              placeholder="example@odinmail.com"
               onChange={(e) => this.props.setPersonalInfoField(e, "email")}
               value={this.props.personalInfoArr().email}
             />
@@ -65,6 +70,7 @@ class PersonalInfoField extends Component {
               type="state"
               id="address"
               name="address"
+              placeholder="#2 Kings Str. Port Harcourt Nigeria"
               onChange={(e) => this.props.setPersonalInfoField(e, "province")}
               value={this.props.personalInfoArr().province}
             />
@@ -87,6 +93,7 @@ class PersonalInfoField extends Component {
             id="desc"
             cols="50"
             name="desc"
+            placeholder="Write what motivates you as an individual"
             onChange={(e) => this.props.setPersonalInfoField(e, "desc")}
             value={this.props.personalInfoArr().desc}
           ></textarea>

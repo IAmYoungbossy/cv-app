@@ -100,6 +100,10 @@ hr {
   margin-right: 80px;
 }
 
+fieldset > hr {
+  background-color: blue;
+}
+
 .list-wrapper,
 .category_wrapper {
   display: flex;

@@ -1,4 +1,5 @@
 import uniqid from "uniqid";
+import img_placeholder_avatar from "./img_placeholder_avatar.jpg"
 
 export const previewCV = [
   [
@@ -7,10 +8,10 @@ export const previewCV = [
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus urna neque viverra justo nec ultrices dui sapien. Aliquam eleifend mi in nulla. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum.",
       fname: "Letam",
       lname: "Barinua",
-      phone: "07012345678",
+      phone: "+070100004448858",
       email: "letamexample@example.com",
-      photo: "",
-      province: "Rivers State",
+      photo: img_placeholder_avatar,
+      province: "#248 Forces Avenue Washington DC, White House United States OF Ameria",
       uniqueID: uniqid(),
     },
   ],

@@ -14,6 +14,7 @@ class ExperienceField extends Component {
               type="text"
               id="position"
               name="position"
+              placeholder="Front End Developer"
               onChange={(e) => this.props.setExperienceField(e, "position")}
               value={this.props.experienceArr.position}
             />
@@ -24,6 +25,7 @@ class ExperienceField extends Component {
               type="text"
               id="company"
               name="company"
+              placeholder="Google"
               onChange={(e) => this.props.setExperienceField(e, "company")}
               value={this.props.experienceArr.company}
             />
@@ -35,6 +37,7 @@ class ExperienceField extends Component {
             type="city"
             id="city"
             name="city"
+            placeholder="Port Harcourt"
             onChange={(e) => this.props.setExperienceField(e, "city")}
             value={this.props.experienceArr.city}
           />
@@ -46,6 +49,7 @@ class ExperienceField extends Component {
               type="number"
               id="from"
               name="from"
+              placeholder="2013"
               onChange={(e) => this.props.setExperienceField(e, "from")}
               value={this.props.experienceArr.from}
             />
@@ -56,6 +60,7 @@ class ExperienceField extends Component {
               type="number"
               id="to"
               name="to"
+              placeholder="2018"
               onChange={(e) => this.props.setExperienceField(e, "to")}
               value={this.props.experienceArr.to}
             />
