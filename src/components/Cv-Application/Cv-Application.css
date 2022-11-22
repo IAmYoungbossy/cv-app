@@ -69,8 +69,9 @@
 }
 
 .photo {
-  height: 183px;
   margin: auto;
+  height: 183px;
+  overflow: hidden;
   border: 1px solid;
   margin-bottom: 15px;
   width: min(183px, 100%);
@@ -112,8 +113,38 @@
 
 .email-para {
   word-wrap: break-word;
+  font-size: min(1rem, 5vw);
 }
 
 img {
   width: 100%;
+}
+
+@media print {
+  body {
+    position: relative;
+  }
+
+  title {
+    visibility: hidden;
+  }
+
+  .form-top-btn, header, footer {
+     visibility: hidden;
+     position: absolute;
+  }
+  
+  .cv {
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    margin-top: 0;
+    position: absolute;
+    box-shadow: 0px 2px 7px 4px #ffffffa3;
+  }
+
+  .cv-header {
+    padding: 25px;
+    background-color: #002d44;
+  }
 }

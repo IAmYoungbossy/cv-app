@@ -22,7 +22,7 @@ export default class RippleButton extends Component {
       this.props.addPersonalInfo();
       if (this.props.cvCondition) this.props.changeCondition();
     }
-    if (this.props.content === "Download") this.props.printCV();
+    if (this.props.content === "Download") window.print();
     if (this.props.content === "Auto Fill") {
       this.props.autoFill();
       this.props.addPersonalInfo();
